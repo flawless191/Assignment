@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html class="">
+
+<head>
+    <title></title>
+    <style>
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        main,
+        nav,
+        section,
+        summary {
+            display: block;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            
+        }
+
+        html {
+            font-family: sans-serif;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        a {
+            background: transparent;
+        }
+
+        b,
+        strong {
+            font-weight: 700;
+        }
+
+        *,
+        *::before,
+        *::after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        button,
+        input {
+            line-height: normal;
+        }
+
+        button,
+        select {
+            text-transform: none;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            margin: 0;
+            font-family: inherit;
+            font-size: 100%;
+        }
+
+        button,
+        html input[type=button],
+        input[type=reset],
+        input[type=submit] {
+            cursor: pointer;
+            -webkit-appearance: button;
+        }
+
+        body {
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.4285;
+            color: #333;
+            background-color: #fff;
+            
+
+        }
+
+        html {
+            font-size: 62.5%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        input,
+        button,
+        select,
+        textarea {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+       
+        button {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: none !important;
+            vertical-align: top;
+            background: transparent;
+            font-weight: 400;
+            line-height: 1.5em;
+        }
+
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        /* @media all and (min-width:768px) */
+        .container {
+            width: 750px;
+        }
+
+        /* @media all and (min-width:992px) */
+        .container {
+            width: 970px;
+        }
+
+        /* @media all and (min-width:1200px) */
+        .container {
+            width: 1170px;
+        }
+
+        .container::before,
+        .container::after {
+            display: table;
+            content: " ";
+        }
+
+        .container::after {
+            clear: both;
+        }
+
+        .page_container>.container {
+            padding: 30px 0;
+        }
+
+        .page_container {
+            max-width: 1230px;
+            margin: 50px auto;
+            background: #ffffff;
+            -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, .2);
+            box-shadow: 0 0 15px #0003;
+        }
+
+        #wrapper2 {
+            overflow: hidden;
+            background: url(//cdn.shopify.com/s/files/1/0389/1369/t/2/assets/body_bg.png?11631052567646816355) 50% 0 no-repeat !important;
+            background-color: #fff;
+            height: 100%;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            color: #888;
+            
+        }
+
+        html,
+        body,
+        #wrapper {
+            height: 100%;
+        }
+
+        .row {
+            margin-right: 0px;
+            margin-left: 0px;
+            background-color: #fc0303;
+        }
+
+        .row::before,
+        .row::after {
+            display: table;
+            content: " ";
+        }
+
+        .row::after {
+            clear: both;
+        }
+
+        .col-xs-1,
+        .col-sm-1,
+        .col-md-1,
+        .col-lg-1,
+        .col-xs-2,
+        .col-sm-2,
+        .col-md-2,
+        .col-lg-2,
+        .col-xs-3,
+        .col-sm-3,
+        .col-md-3,
+        .col-lg-3,
+        .col-xs-4,
+        .col-sm-4,
+        .col-md-4,
+        .col-lg-4,
+        .col-xs-5,
+        .col-sm-5,
+        .col-md-5,
+        .col-lg-5,
+        .col-xs-6,
+        .col-sm-6,
+        .col-md-6,
+        .col-lg-6,
+        .col-xs-7,
+        .col-sm-7,
+        .col-md-7,
+        .col-lg-7,
+        .col-xs-8,
+        .col-sm-8,
+        .col-md-8,
+        .col-lg-8,
+        .col-xs-9,
+        .col-sm-9,
+        .col-md-9,
+        .col-lg-9,
+        .col-xs-10,
+        .col-sm-10,
+        .col-md-10,
+        .col-lg-10,
+        .col-xs-11,
+        .col-sm-11,
+        .col-md-11,
+        .col-lg-11,
+        .col-xs-12,
+        .col-sm-12,
+        .col-md-12,
+        .col-lg-12 {
+            position: relative;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        /* @media all and (min-width:768px) */
+        .col-sm-12 {
+            width: 100%;
+        }
+
+        /* @media all and (min-width:768px) */
+        .col-sm-5 {
+            width: 41.66%;
+        }
+
+        /* @media all and (min-width:768px) */
+        .col-sm-7 {
+            width: 58.33%;
+        }
+
+        /* @media all and (min-width:1200px) */
+        .col-lg-1,
+        .col-lg-2,
+        .col-lg-3,
+        .col-lg-4,
+        .col-lg-5,
+        .col-lg-6,
+        .col-lg-7,
+        .col-lg-8,
+        .col-lg-9,
+        .col-lg-10,
+        .col-lg-11 {
+            float: left;
+        }
+
+        /* @media all and (min-width:1200px) */
+        .col-lg-3 {
+            width: 25%;
+        }
+
+        /* @media all and (min-width:768px) */
+        .col-sm-1,
+        .col-sm-2,
+        .col-sm-3,
+        .col-sm-4,
+        .col-sm-5,
+        .col-sm-6,
+        .col-sm-7,
+        .col-sm-8,
+        .col-sm-9,
+        .col-sm-10,
+        .col-sm-11 {
+            float: left;
+        }
+
+        /* @media all and (min-width:1200px) */
+        .col-lg-4 {
+            width: 33.33%;
+        }
+
+        /* @media all and (min-width:1200px) */
+        .col-lg-5 {
+            width: 41.66%;
+        }
+
+        #header .header_row-1 {
+            min-height: 60px;
+        }
+
+        .header_user {
+            overflow: hidden;
+            background: #000000;
+        }
+
+        #header .header_row-2 {
+            min-height: 46px;
+        }
+
+        a,
+        span {
+            vertical-align: baseline;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .header_user a {
+            height: 46px;
+            display: block;
+            float: left;
+            background: #e7e7e7;
+            padding: 0 15px;
+            font: 700 15px/47px Roboto;
+            color: #000;
+            text-decoration: none;
+            text-transform: uppercase;
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -ms-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        .header_user a+a {
+            border-left: 3px solid #ffffff;
+            background: #fec108;
+        }
+
+        .header_user a.header_cart {
+            background: none !important;
+        }
+
+        b,
+        strong {
+            font-weight: 700;
+        }
+
+        .header_user a.header_cart b {
+            vertical-align: baseline;
+            margin: 0 4px 0 0;
+            color: #fec108;
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -ms-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        .header_user a.header_cart span {
+            margin: 0 4px 0 0;
+            color: #f83235;
+            text-transform: none;
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -ms-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        .header_currency {
+            height: 20px;
+            float: right;
+            padding: 15px 0 0;
+        }
+
+        label {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .customselect_wrap {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .header_currency .customselect_wrap {
+            display: inline-block;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.4285;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px #00000013;
+            -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+
+        select,
+        select.form-control,
+        textarea,
+        textarea.form-control,
+        input[type=text],
+        input[type=email],
+        input[type=number],
+        input[type=password],
+        input[type=telephone] {
+            padding: 6px;
+            border: 1px solid #dddddd;
+            font: 13px Arial;
+            color: #888;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        select,
+        select.form-control {
+            padding: 8px 3px;
+        }
+
+        .customselect_wrap select {
+            margin: 0;
+            padding: 0;
+            border: none;
+            z-index: 100;
+            cursor: pointer;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .header_currency #currencies {
+            width: 50px;
+            height: 20px;
+        }
+
+        .customselect_wrap span.customSelect {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .header_currency .customselect_wrap span.customSelect {
+            width: 50px;
+            height: 20px;
+        }
+
+        i,
+        dfn {
+            font-style: italic;
+        }
+
+        .fa {
+            display: inline-block;
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .fa-chevron-down::before {
+            content: "\f078";
+        }
+
+        .header_currency .customselect_wrap i {
+            font-size: 12px;
+            color: #888;
+            position: absolute;
+            right: 0px;
+            top: 1px;
+            z-index: 1;
+        }
+
+        .header_currency .customselect_wrap span.customSelect span {
+            color: #000;
+        }
+
+        .header_search #search-field {
+            width: 100%;
+            height: 46px;
+            float: left;
+            padding: 0 46px 0 10px;
+            border: 1px solid #dddddd;
+        }
+
+        .header_search #search-submit {
+            width: 46px;
+            height: 46px;
+            margin: 0 0 0 -47px;
+            color: #000;
+        }
+
+        .fa-search::before {
+            content: "\f002";
+        }
+
+        .header_search #search-submit i {
+            font-size: 15px;
+            line-height: 45px;
+        }
+
+        #logo {
+            min-height: 106px;
+            display: block;
+            padding: 10px 10px 6px;
+            background: #fc0303;
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -ms-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        #logo b {
+            display: block;
+            padding: 6px 5px 10px;
+            background: #000000;
+            color: #fff;
+            font: 50px Roboto;
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -ms-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        #logo span {
+            display: block;
+            padding: 6px 0 0;
+            font: 700 17px/1em Roboto;
+            color: #000;
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -ms-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        .visible-lg,
+        tr.visible-lg,
+        th.visible-lg,
+        td.visible-lg {
+            display: none !important;
+        }
+
+        /* @media all and (min-width:1200px) */
+        .visible-lg {
+            display: block !important;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            margin: 0;
+            font-family: inherit;
+            font-size: 100%;
+        }
+
+        input,
+        button,
+        select,
+        textarea {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        select,
+        select.form-control,
+        textarea,
+        textarea.form-control,
+        input[type=text],
+        input[type=email],
+        input[type=number],
+        input[type=password],
+        input[type=telephone] {
+            padding: 6px;
+            border: 1px solid #dddddd;
+            font: 13px Arial;
+            color: #888;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        select,
+        select.form-control {
+            padding: 8px 3px;
+        }
+
+        .hidden-lg {
+            display: block !important;
+            background-color: #000;
+        }
+
+        /* @media all and (min-width:1200px) */
+        .hidden-lg,
+        tr.hidden-lg,
+        th.hidden-lg,
+        td.hidden-lg {
+            display: none !important;
+        }
+
+        .hidden-lg {
+            width: 100%;
+            height: 46px;
+            padding: 11px;
+            background-color: #000;
+            border: none;
+            font: 700 15px Roboto;
+            color: #fff;
+            text-transform: uppercase;
+            cursor: pointer;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .sf-menu li {
+            position: relative;
+        }
+
+        .sf-menu>li {
+            float: left;
+        }
+
+        a,
+        span {
+            vertical-align: baseline;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sf-menu>li>a {
+            height: 46px;
+            display: block;
+            padding: 0 15px;
+            border-right: 3px solid #ffffff;
+            font: 700 15px/47px Roboto;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -ms-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+            background-color: #000;
+
+        }
+
+        ul ul,
+        ol ul,
+        ul ol,
+        ol ol {
+            margin-bottom: 0px;
+        }
+
+        .sf-menu ul {
+            width: 220px !important;
+            background-color: #000000;
+            position: absolute;
+            left: 0px;
+            top: 49px;
+            z-index: 1000;
+        }
+
+        .sf-menu ul li a {
+            display: block;
+            padding: 10px 15px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -ms-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        .baq {
+            display: block;
+            background-color: #000;
+            color: rgb(24, 23, 23);
+        }
+        #navigation {
+            
+            background-color: #000000;
+        }
+        .header_row-2 header_user{
+            background-color: #e4e713;
+        }
+        
+           .has-dropdown ul.sub-menu{
+                background-color: #fc0303;
+                display: none;
+           }
+           .has-dropdown:hover  ul.sub-menu{
+           background-color: rgb(245, 26, 26);
+            display: block;
+           }
+           
+    </style>
+</head>
+
+<body class="template-index" id="extreme">
+    <div id="wrapper">
+        <div id="wrapper2">
+            <div class="page_container">
+                <div class="container">
+                    <header id="header">
+
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-3 logo_wrap">
+                                <a id="logo" href="/">
+
+                                    <b>GiftShop</b>
+
+                                    <span>Sports Clothing &amp; Gear</span>
+                                </a>
+                            </div>
+                            <div class="col-sm-5 col-lg-4">
+                                <div class="header_row-1"></div>
+                                <div class="header_row-2">
+                                    <!-- HEADER SEARCH -->
+                                    <div class="header_search">
+                                        <form class="search-form" role="search" action="/search" method="get">
+                                            <input name="q" class="hint form-control" id="search-field" type="text"
+                                                placeholder="Search store...">
+                                            <button id="search-submit" type="submit"><i
+                                                    class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-7 col-lg-5">
+                                <div class="header_row-1">
+
+                                    <!-- CURRENCIES -->
+                                    <div class="header_currency">
+                                        <label for="currencies">Currencies:</label>
+                                        <div class="customselect_wrap">
+                                            <select name="currencies" class="hasCustomSelect" id="currencies"
+                                                style="width: 50px; height: 20px; font-size: 13px; position: absolute; opacity: 0;">
+
+
+                                                <option selected="selected" value="USD">USD</option>
+
+
+
+
+                                                <option value="EUR">EUR</option>
+
+
+
+                                                <option value="GBP">GBP</option>
+
+
+                                            </select><span class="customSelect" style="display: inline-block;"><span
+                                                    class="customSelectInner"
+                                                    style="width: 50px; display: inline-block;">USD</span></span>
+                                            <i class="fa fa-chevron-down"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="header_row-2 header_user">
+
+                                    <!-- USER MENU -->
+
+                                    <a id="customer_login_link" href="/account/login">Log in</a>
+
+                                    <a id="customer_register_link" href="/account/register">Create an account</a>
+
+
+
+                                    <!-- HEADER CART -->
+                                    <a class="header_cart" href="/cart"><b>Cart</b><span class="cart-total-items"></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </header>
+
+                    <div class="clearfix" id="navigation">
+                        <nav role="navigation">
+                            <div class="baq">
+                                <ul class="sf-menu" style="-ms-touch-action: pan-y;">
+
+
+
+
+
+
+                                    <li class="first active firstItem">
+                                        <a title="" href="/">Home</a>
+
+                                    </li>
+
+
+
+
+
+
+                                    <li class="has-dropdown">
+                                        <a title="" class="sf-with-ul" href="/collections/all">Catalog</a>
+
+                                        <ul class="sub-menu"
+                                            >
+
+
+                                            <li class="first firstItem"
+                                                style="width: 100%; float: none; white-space: normal;"><a class="first"
+                                                    style="width: auto; float: none;"
+                                                    href="/collections/brands">Gift</a>
+                                            </li>
+
+                                        
+
+                                            <li style="width: 100%; float: none; white-space: normal;"><a
+                                                    style="width: auto; float: none;"
+                                                    href="/collections/equipment">Equipment</a></li>
+
+                                            <li style="width: 100%; float: none; white-space: normal;"><a
+                                                    style="width: auto; float: none;"
+                                                    href="/collections/clothing">Clothing</a></li>
+
+                                            <li class="last lastItem"
+                                                style="width: 100%; float: none; white-space: normal;"><a class="last"
+                                                    style="width: auto; float: none;"
+                                                    href="/collections/activities">Activities</a></li>
+
+
+                                        </ul>
+
+                                    </li>
+
+
+
+
+
+
+                                    
+
+
+
+
+
+
+                                    <li>
+                                        <a title="" href="/pages/about-us">About Us</a>
+
+                                    </li>
+
+
+
+
+
+
+                                    <li>
+                                        <a title="" href="/pages/documentation">Documentation</a>
+
+                                    </li>
+
+
+
+
+
+
+                                    <li class="last lastItem">
+                                        <a title="" href="/pages/contact-us">Contact us</a>
+
+                                    </li>
+                                    
+
+                                </ul><select class="hidden-lg">
+                                    <option value="#">Navigate to...</option>
+                                    <option selected="selected" value="https://tm-shopify020-extreme.myshopify.com/">
+                                        Home
+                                    </option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/collections/all">Catalog
+                                    </option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/collections/brands">
+                                        –Brands
+                                    </option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/collections/kids">–Kids`
+                                    </option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/collections/women-s">
+                                        –Women`s
+                                    </option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/collections/footwear">
+                                        –Footwear</option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/collections/men-s">–Men`s
+                                    </option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/collections/equipment">
+                                        –Equipment</option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/collections/clothing">
+                                        –Clothing</option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/collections/activities">
+                                        –Activities</option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/blogs/blog">Blog</option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/pages/about-us">About Us
+                                    </option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/pages/documentation">
+                                        Documentation</option>
+                                    <option value="https://tm-shopify020-extreme.myshopify.com/pages/contact-us">Contact
+                                        us
+                                    </option>
+                                </select>
+                            </div>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
