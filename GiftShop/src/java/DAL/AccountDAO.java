@@ -18,7 +18,7 @@ import model.Account;
  */
 public class AccountDAO extends BaseDAO<Object> {
 
-    public Account getAccounts(String user,String pass) {
+    public Account getAccounts(String user, String pass) {
         try {
             String sqlquery = "Select aid,username,[password],isAdmin From Account \n"
                     + "Where username = ? and [password] = ?";
@@ -40,7 +40,7 @@ public class AccountDAO extends BaseDAO<Object> {
         }
         return null;
     }
-    
+
     public Account checkAccountsExist(String user) {
         try {
             String sqlquery = "Select aid,username,[password],isAdmin From Account \n"
@@ -48,7 +48,7 @@ public class AccountDAO extends BaseDAO<Object> {
 
             PreparedStatement statement = connection.prepareStatement(sqlquery);
             statement.setString(1, user);
-            
+
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 Account a = new Account();
@@ -63,7 +63,21 @@ public class AccountDAO extends BaseDAO<Object> {
         }
         return null;
     }
-    
 
-   
+    public void addAccount(Account a) {
+        try {
+            String sqlquery = "INSERT INTO Account(username, [password], isAdmin) VALUES (?, ?, 0);";
+
+            PreparedStatement statement = connection.prepareStatement(sqlquery);
+            statement.setString(1, a.getUser());
+            statement.setString(2, a.getPass());
+
+            ResultSet rs = statement.executeQuery();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 }

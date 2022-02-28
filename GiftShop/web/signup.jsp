@@ -21,7 +21,7 @@
                     <input type="password" placeholder="password" name="password"/>
                     <input type="password" placeholder="reenter password" name="repassword"/>
                     <button>create</button>
-                    <p class="message">Already registered? <a href="/css/login.html">Sign In</a></p>
+                    <p class="message">Already registered? <a href="login.jsp">Sign In</a></p>
                 </form>
 
             </div>
