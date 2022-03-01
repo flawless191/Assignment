@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="login&signup.css" />
+        <link rel="stylesheet" href="css/login&signup.css" />
     </head>
     <body>
         <div class="login_signup">
@@ -21,7 +21,7 @@
                     <input type="text" placeholder="username" name="username"/>
                     <input type="password" placeholder="password" name="password"/>
                     <button>login</button>
-                    <p class="message">Not registered? <a href="#">Create an account</a></p>
+                    <p class="message">Not registered? <a href="signup.jsp">Create an account</a></p>
                 </form>
             </div>
         </div>

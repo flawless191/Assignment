@@ -8,8 +8,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- Bootstrap -->
-        <link href="bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="stylepage.css" />
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/stylepage.css" />
     </head>
 
     <body>
