@@ -16,21 +16,21 @@ public class Product {
     String productImg;
     int productPrice;
     String productNote;
-    int productCategory;
     int cid;
 
     public Product() {
     }
 
-    public Product(int pid, String productName, String productImg, int productPrice, String productNote, int productCategory, int cid) {
+    public Product(int pid, String productName, String productImg, int productPrice, String productNote, int cid) {
         this.pid = pid;
         this.productName = productName;
         this.productImg = productImg;
         this.productPrice = productPrice;
         this.productNote = productNote;
-        this.productCategory = productCategory;
         this.cid = cid;
     }
+
+    
 
     public int getCid() {
         return cid;
@@ -80,12 +80,6 @@ public class Product {
         this.productNote = productNote;
     }
 
-    public int getProductCategory() {
-        return productCategory;
-    }
-
-    public void setProductCategory(int productCategory) {
-        this.productCategory = productCategory;
-    }
+   
 
 }

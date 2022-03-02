@@ -61,8 +61,15 @@ public class homePageController extends HttpServlet {
             throws ServletException, IOException {
         ProductDAO pd = new ProductDAO();
         ArrayList<Product> productsNew = new ArrayList<>();
+        ArrayList<Product> productsBest = new ArrayList<>();
+        ArrayList<Product> products = new ArrayList<>();
         productsNew = pd.get4NewProducts();
+        productsBest = pd.get4BestSell();
+        products = pd.getProducts();
+
         request.setAttribute("listPNew", productsNew);
+        request.setAttribute("listBest", productsBest);
+        request.setAttribute("listP", products);
         request.getRequestDispatcher("homePage.jsp").forward(request, response);
 
     }

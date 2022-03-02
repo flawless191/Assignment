@@ -1,4 +1,5 @@
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,7 @@
                                     <button type="submit" class="btn btn-default">                                       
                                         Search
                                     </button>
-                                    
+
                                 </div>
                             </form>
                         </div>
@@ -61,8 +62,8 @@
                         <!-- HEADER CART -->
 
 
-                            <a class="header_cart" href="#" id="customer_cart_link"><b>Cart</b><span
-                                    class="cart-items"></span></a>
+                        <a class="header_cart" href="#" id="customer_cart_link"><b>Cart</b><span
+                                class="cart-items"></span></a>
 
                     </div>
                 </div>
@@ -109,7 +110,7 @@
                 </div>
             </div>
         </div>
-       
+
 
         <div class="container">
             <div class="row">
@@ -159,7 +160,35 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="title">THE BEST SELL PRODUCT</h2>
+                    <p class="combo-header-des">
+                        Buy the best, and forget the rest!
+                    </p>
+                </div>
+            </div>
 
+            <div class="row">
+                <c:forEach items="${listBest}" var="b">
+                    <div class="col-md-3">
+                        <div>
+                            <img src="${b.productImg}" class="img-responsive" />
+                            <div class="item">
+                                <p class="item-title">${b.productName}</p>
+                                <p class="item-description">
+                                    Discount: <span style="font-weight: bold; margin-left: 10px">10%</span>
+                                </p>
+                                <p>
+                                    Price: 
+                                    <span style="color: #f72b2f; margin-left: 10px; font-size: 20px">${b.productPrice} $ </span>
+                                    <a href="#" id="add_cart">Add to cart </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h2 class="title">THE PRODUCT IN STORE</h2>
@@ -168,8 +197,51 @@
                     </p>
                 </div>
             </div>
+            <div class="row">
+                <c:forEach items= "${listP}" begin="0" end="7" var="p">
+                    <div class="col-md-3">
+                        <div>
+                            <img src="${p.productImg}" class="img-responsive" />
+                            <div class="item">
+                                <p class="item-title">${p.productName}</p>
+                                <p class="item-description">
+                                    Discount: <span style="font-weight: bold; margin-left: 10px">10%</span>
+                                </p>
+                                <p>
+                                    Price: 
+                                    <span style="color: #f72b2f; margin-left: 10px; font-size: 20px">${p.productPrice} $ </span>
+                                    <a href="#" id="add_cart">Add to cart </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>SPECIAL SALE OF FOR YOU</h2>
+                    <p class="combo-header-des">Limited time offer. Hurry up!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div>
+                        <img class="img-responsive" src="https://images.milledcdn.com/2021-01-22/EhrGdVgNJWZIiH2I/qnCxAqvmzh5l.webp" />
+                    </div>
+                </div>
 
-            
+                <div class="col-md-4">
+                    <div>
+                        <img class="img-responsive" src="https://www.pngall.com/wp-content/uploads/12/Free-Delivery-PNG-Images.png" />
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        <img class="img-responsive" src="https://images.milledcdn.com/2021-01-22/EhrGdVgNJWZIiH2I/qnCxAqvmzh5l.webp" />
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -193,7 +265,7 @@
 
                         <li><a title="" href="/pages/about-us">About Us</a></li>
 
-                        
+
 
                         <li class="lastItem"><a title="" href="/pages/contact-us">Contact us</a></li>
 
@@ -247,7 +319,7 @@
 
         </div>
 
-        
+
     </body>
 
 </html>
