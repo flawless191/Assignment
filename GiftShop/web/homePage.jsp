@@ -82,7 +82,7 @@
                         </li>
 
                         <li class="has-dropdown">
-                            <a title="" class="sf-with-ul" href="#">Shop</a>
+                            <a title="" class="sf-with-ul" href="shopController">Shop</a>
                         </li>
 
 

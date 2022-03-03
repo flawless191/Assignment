@@ -111,4 +111,37 @@ public class ProductDAO extends BaseDAO<Object> {
         }
         return products;
     }
+    public ArrayList<Product> getProductByCategoryId(int id) {
+        try {
+            ArrayList<Product> products = new ArrayList<>();
+
+            String sql = "SELECT  [pid]\n"
+                    + "      ,[productname]\n"
+                    + "      ,[productimg]\n"
+                    + "      ,[productprice]\n"
+                    + "      ,[productnote]\n"
+                    + "      ,[cid]\n"
+                    + "  FROM [Product]\n"
+                    + "  Where [cid]= ?\n"
+                    + "  ";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setPid(rs.getInt("pid"));
+                p.setProductName(rs.getString("productname"));
+                p.setProductImg(rs.getString("productimg"));
+                p.setProductPrice(rs.getInt("productprice"));
+                p.setProductNote(rs.getString("productnote"));
+                p.setCid(rs.getInt("cid"));
+                products.add(p);
+
+            }
+            return products;
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

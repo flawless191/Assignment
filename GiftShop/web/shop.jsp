@@ -71,32 +71,24 @@
                 <div class="clearfix" id="navigation">
                     <ul class="sf-menu">
 
-                        <li class="first active firstItem">
-                            <a  href="/">Home</a>
+                        <li class="first ${cid==null?"active":""} firstItem">
+                            <a  href="/">Shop</a>
 
                         </li>
 
 
                         <li class="has-dropdown">
-                            <a  class="sf-with-ul" href="#">Catalog</a>
+                            <a title="" class="${cid!=null?"active":""}" href="#">Catalog</a>
+
 
                             <ul class="sub-menu" style="width: 230px; ">
+                                <c:forEach items="${listC}" var="c" >
+                                    <li style="width: 100%; float: none; "><a class="${cid==c.cid?"active":""}"
+                                            style="width: auto; float: none;" href="categoryController?cid=${c.cid}">${c.categoryName}</a>
+                                    </li>
+                                </c:forEach>
 
-                                <li style="width: 100%; float: none; "><a
-                                        style="width: auto; float: none;" href="#">Fashion</a>
-                                </li>
-                                <li class="first firstItem"
-                                    style="width: 100%; float: none; "><a class="first"
-                                                                      style="width: auto; float: none;" href="#">Equipment</a>
-                                </li>
 
-                                <li style="width: 100%; float: none; "><a
-                                        style="width: auto; float: none;" href="#">Accessories</a>
-                                </li>
-
-                                <li style="width: 100%; float: none;"><a
-                                        style="width: auto; float: none;"
-                                        href="#">Other</a></li>
                             </ul>
 
                         </li>
