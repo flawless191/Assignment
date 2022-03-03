@@ -4,10 +4,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <title>Gift Shop</title>
-                <!-- Bootstrap -->
+        <title>Gift Shop</title>
+        <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/stylepage.css" />
+        <link rel="stylesheet" href="css/dropdownstyle.css" />
+
     </head>
     <body>
         <div class="container-fluid">
@@ -66,22 +68,58 @@
 
             </div>
             <div class="row-Menu">
-                <div class="sf-Menu">
-                    <a  title="" href="home.jsp">Home</a>
+                <div class="clearfix" id="navigation">
+                    <ul class="sf-menu">
 
-                    <a class="active" href="#">Shop</a>
+                        <li class="first active firstItem">
+                            <a  href="/">Home</a>
 
-                    <a title="" href="/">Blog</a>
-
-                    <a title="" href="/">Contact</a>
-
+                        </li>
 
 
+                        <li class="has-dropdown">
+                            <a  class="sf-with-ul" href="#">Catalog</a>
+
+                            <ul class="sub-menu" style="width: 230px; ">
+
+                                <li style="width: 100%; float: none; "><a
+                                        style="width: auto; float: none;" href="#">Fashion</a>
+                                </li>
+                                <li class="first firstItem"
+                                    style="width: 100%; float: none; "><a class="first"
+                                                                      style="width: auto; float: none;" href="#">Equipment</a>
+                                </li>
+
+                                <li style="width: 100%; float: none; "><a
+                                        style="width: auto; float: none;" href="#">Accessories</a>
+                                </li>
+
+                                <li style="width: 100%; float: none;"><a
+                                        style="width: auto; float: none;"
+                                        href="#">Other</a></li>
+                            </ul>
+
+                        </li>
+
+
+
+                        <li>
+                            <a  href="#">About Us</a>
+
+                        </li>
+
+
+                        <li class="last lastItem">
+                            <a  href="#">Contact us</a>
+
+                        </li>
+
+                    </ul>
                 </div>
             </div>
-            
+
         </div>
-        
+
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -101,7 +139,7 @@
 
 
             <div class="row">
-                <c:forEach items= "${listP}" begin="0" end="7" var="p">
+                <c:forEach items= "${listP}" var="p">
                     <div class="col-md-3">
                         <div>
                             <img src="${p.productImg}" class="img-responsive" />
