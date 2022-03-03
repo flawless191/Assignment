@@ -1,18 +1,14 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <head>
-        <title>Gift Shop</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!-- Bootstrap -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>Gift Shop</title>
+                <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/stylepage.css" />
     </head>
-
     <body>
         <div class="container-fluid">
             <div class="row">
@@ -71,17 +67,9 @@
             </div>
             <div class="row-Menu">
                 <div class="sf-Menu">
-                    <a class="active" title="" href="home.jsp">Home</a>
+                    <a  title="" href="home.jsp">Home</a>
 
-
-
-
-
-
-
-                    <a href="#">Shop</a>
-
-
+                    <a class="active" href="#">Shop</a>
 
                     <a title="" href="/">Blog</a>
 
@@ -89,106 +77,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
             </div>
-            <div class="rowBanner">
-                <div class="col-md-12 banner123">
-                    <img style="height: 520px; width: 100%;" class="img-responsive"
-                         src="https://scontent.fhan3-3.fna.fbcdn.net/v/t39.30808-6/244000557_10158931195767746_2433075128572636272_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=e3f864&_nc_ohc=FjRoya0CsfgAX_60AWD&_nc_ht=scontent.fhan3-3.fna&oh=00_AT8otDqAvk9Wb5bS24gGhZrBT8zTPWJswLq954EJ-YIcNw&oe=622163E6" />
-                </div>
-            </div>
+            
         </div>
-
-
+        
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 style="color: #f72b2f; text-transform:uppercase;"  >New Product</h2>
-                    <img style="width:100%;" class="img-responsive" src="https://store.manutd.com/content/ws/all/f9cf2ce8-409d-4b91-84db-c1a5696175b8__1250X60.png" />
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="service-row">
-                        <img style="width:100%;" class="img-responsive" src="${listPNew[0].productImg}" />
-                        <div class="service-item">
-                            <h3>Beauty and Cute</h3>
-                            <p>Always in style!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="service-row">
-                        <img style="width:100%;" class="img-responsive" src="${listPNew[1].productImg}" />
-                        <div class="service-item">
-                            <h3>Always On Top</h3>
-                            <p>All eyes on you</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="service-row">
-                        <img style="width:100%;" class="img-responsive" src="${listPNew[2].productImg}" />
-                        <div class="service-item">
-                            <h3>Look perfect.</h3>
-                            <p>Discover the difference.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="service-row">
-                        <img style="width:100%; "  class="img-responsive" src="${listPNew[3].productImg} "  />
-                        <div class="service-item">
-                            <h3>Just Perfect</h3>
-                            <p>Don't worry, we have it.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 class="title">THE BEST SELL PRODUCT</h2>
-                    <p class="combo-header-des">
-                        Buy the best, and forget the rest!
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <c:forEach items="${listBest}" var="b">
-                    <div class="col-md-3">
-                        <div>
-                            <img src="${b.productImg}" class="img-responsive" />
-                            <div class="item">
-                                <p class="item-title">${b.productName}</p>
-                                <p class="item-description">
-                                    Discount: <span style="font-weight: bold; margin-left: 10px">10%</span>
-                                </p>
-                                <p>
-                                    Price: 
-                                    <span style="color: #f72b2f; margin-left: 10px; font-size: 20px">${b.productPrice} $ </span>
-                                    <a href="#" id="add_cart">Add to cart </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h2 class="title">THE PRODUCT IN STORE</h2>
@@ -197,6 +91,15 @@
                     </p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+
+                    <img style="width:100%;" class="img-responsive"
+                         src="https://store.manutd.com/content/ws/all/f9cf2ce8-409d-4b91-84db-c1a5696175b8__1250X60.png" />
+                </div>
+            </div>
+
+
             <div class="row">
                 <c:forEach items= "${listP}" begin="0" end="7" var="p">
                     <div class="col-md-3">
@@ -243,10 +146,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
         <div class="container-fluid ">
             <div class="row">
 
@@ -318,8 +217,5 @@
 
 
         </div>
-
-
     </body>
-
 </html>

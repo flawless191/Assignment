@@ -12,6 +12,10 @@
         <servlet-name>homePageController</servlet-name>
         <servlet-class>controller.homePageController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>shopController</servlet-name>
+        <servlet-class>controller.shopController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>homePageController</servlet-name>
         <url-pattern>/homePageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>shopController</servlet-name>
+        <url-pattern>/shopController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
