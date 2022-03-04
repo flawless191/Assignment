@@ -20,6 +20,10 @@
         <servlet-name>categoryController</servlet-name>
         <servlet-class>controller.categoryController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>managerController</servlet-name>
+        <servlet-class>controller.managerController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>categoryController</servlet-name>
         <url-pattern>/categoryController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>managerController</servlet-name>
+        <url-pattern>/managerController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,0 +1,64 @@
+.table thead{
+    background-color: #db1d24;
+}
+
+.table tr td img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+
+}
+.table{
+    text-align: center;
+}
+
+thead{
+    border:2px solid black;
+}
+thead td{
+    border:2px solid black;
+}
+
+
+
+
+
+.manager_bannerSet .manager_left {
+    padding: 20px;
+    background-color: #fec108;
+    margin-bottom: 15px;
+    border: 2px solid ;
+    border-radius: 25px;
+}
+.manager_bannerSet .manager_left a{
+    float: right;
+
+    background-color: #0c0c0b;
+   color: antiquewhite;
+   padding: 5px;
+   border: 2px solid black;
+   border-radius: 25px;
+   margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.manager_bannerSet .manager_left b{
+    text-transform: uppercase;
+    font-size: 25px;
+}
+.header_row-2-search {
+    padding-top: 60px;
+    width: 100%;
+}
+#bt_delete img{
+    
+    
+    margin-top: 50px;
+    
+}
+#bt_update img{
+    
+    
+    margin-top: 0px;
+    
+}

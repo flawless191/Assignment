@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-lg-3 logo_wrap">
-                    <a id="logo" href="home.jsp">
+                    <a id="logo" href="homePageController">
 
                         <b>GiftShop</b>
 
@@ -77,12 +77,12 @@
 
 
                         <li class="active firstItem">
-                            <a  href="#">Home</a>
+                            <a  href="homePageController">Home</a>
 
                         </li>
 
                         <li class="has-dropdown">
-                            <a title="" class="sf-with-ul" href="shopController">Shop</a>
+                            <a  href="shopController">Shop</a>
                         </li>
 
 

@@ -4,18 +4,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gift Shop</title>
-        <!-- Bootstrap -->
+        <title>Manager</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/stylepage.css" />
         <link rel="stylesheet" href="css/dropdownstyle.css" />
 
+        <link rel="stylesheet" href="css/managerStyle.css" />
     </head>
     <body>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-lg-3 logo_wrap">
-                    <a id="logo" href="homePageController">
+                    <a id="logo" href="home.jsp">
 
                         <b>GiftShop</b>
 
@@ -71,28 +71,15 @@
                 <div class="clearfix" id="navigation">
                     <ul class="sf-menu">
 
-                        <li class="first ${cid==null?"active":""} firstItem">
-                            <a  href="/">Shop</a>
+
+                        <li class="active firstItem">
+                            <a  href="#">Home</a>
 
                         </li>
 
-
-                        <li class="has-dropdown">
-                            <a title="" class="${cid!=null?"active":""}" href="#">Catalog</a>
-
-
-                            <ul class="sub-menu" style="width: 235px; ">
-                                <c:forEach items="${listC}" var="c" >
-                                    <li style="width: 100%; float: none; "><a class="${cid==c.cid?"active":""}"
-                                            style="width: auto; float: none;" href="categoryController?cid=${c.cid}">${c.categoryName}</a>
-                                    </li>
-                                </c:forEach>
-
-
-                            </ul>
-
+                        <li class="">
+                            <a  href="shopController">Shop</a>
                         </li>
-
 
 
                         <li>
@@ -110,71 +97,53 @@
                 </div>
             </div>
 
+
         </div>
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 class="title">THE PRODUCT IN STORE</h2>
-                    <p class="combo-header-des">
-                        Quality belong with time!
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-
-                    <img style="width:100%;" class="img-responsive"
-                         src="images/evenBanner.png" />
-                </div>
-            </div>
-
-
-            <div class="row">
-                <c:forEach items= "${listP}" var="p">
-                    <div class="col-md-3">
-                        <div>
-                            <img src="${p.productImg}" class="img-responsive" />
-                            <div class="item">
-                                <p class="item-title">${p.productName}</p>
-                                <p class="item-description">
-                                    Discount: <span style="font-weight: bold; margin-left: 10px">10%</span>
-                                </p>
-                                <p>
-                                    Price: 
-                                    <span style="color: #f72b2f; margin-left: 10px; font-size: 20px">${p.productPrice} $ </span>
-                                    <a href="#" id="add_cart">Add to cart </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2>SPECIAL SALE OF FOR YOU</h2>
-                    <p class="combo-header-des">Limited time offer. Hurry up!</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div>
-                        <img class="img-responsive" src="images/saleoff.png" />
-                    </div>
+            <div class="manager_bannerSet">
+                <div class="manager_left">
+                    <b>Manager System</b> 
+                    <a href="#">AddProduct</a>
                 </div>
 
-                <div class="col-md-4">
-                    <div>
-                        <img class="img-responsive" src="images/freeship.png" />
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div>
-                        <img class="img-responsive" src="images/saleoff.png" />
-                    </div>
-                </div>
             </div>
+            <div class="managet_product">
+                <table class="table bordered 3px ">
+                    <thead >
+                        <tr>
+                            <td><b>ID</b></td>
+                            <td><b>Name</b></td>
+                            <td><b>IMG</b></td>
+                            <td><b>Price</b></td>
+                            <td><b>Action</b></td>
+
+                        </tr>
+                    </thead>
+                    <c:forEach items="${listP}" var="p">
+                        <tr>
+                            <td>${p.pid}</td>
+                            <td>${p.productName}</td>
+                            <td> <img style="width:180px;"
+                                      src="${p.productImg}"
+                                      class="img-responsive" /></td>
+                            <td>${p.productPrice}$</td>
+                            <td><a href="updateController?id=${p.pid}" id="bt_update">
+                                    <img style="width:30px;"
+                                         src="images/editIcon.png"
+                                         class="img-responsive" />
+                                </a>
+                                <a href="#" id="bt_delete" onclick="confirmDelete(${p.pid})">
+                                    <img style="width:30px;"
+                                         src="images/deleteIcon.png" /></a>
+                            </td>
+
+                        </tr>
+                    </c:forEach>
+
+                </table>
+            </div>
+
         </div>
         <div class="container-fluid ">
             <div class="row">
@@ -186,7 +155,7 @@
                     <h3>Menu</h3>
                     <ul class="list">
 
-                        <li class="firstItem"><a title="" href="/test1.html">Home</a></li>
+                        <li class="firstItem"><a title="" href="homePageController">Home</a></li>
 
                         <li><a title="" href="/collections/all">Shop</a></li>
 
