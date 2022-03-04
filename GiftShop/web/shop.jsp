@@ -125,7 +125,7 @@
                 <div class="col-md-12 text-center">
 
                     <img style="width:100%;" class="img-responsive"
-                         src="https://store.manutd.com/content/ws/all/f9cf2ce8-409d-4b91-84db-c1a5696175b8__1250X60.png" />
+                         src="images/evenBanner.png" />
                 </div>
             </div>
 
@@ -159,19 +159,19 @@
             <div class="row">
                 <div class="col-md-4">
                     <div>
-                        <img class="img-responsive" src="https://images.milledcdn.com/2021-01-22/EhrGdVgNJWZIiH2I/qnCxAqvmzh5l.webp" />
+                        <img class="img-responsive" src="images/saleoff.png" />
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div>
-                        <img class="img-responsive" src="https://www.pngall.com/wp-content/uploads/12/Free-Delivery-PNG-Images.png" />
+                        <img class="img-responsive" src="images/freeship.png" />
 
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div>
-                        <img class="img-responsive" src="https://images.milledcdn.com/2021-01-22/EhrGdVgNJWZIiH2I/qnCxAqvmzh5l.webp" />
+                        <img class="img-responsive" src="images/saleoff.png" />
                     </div>
                 </div>
             </div>
