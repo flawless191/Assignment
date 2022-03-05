@@ -14,7 +14,7 @@
         <div class="form_page">
             <div class="form">
 
-                <form class="login-form" action="addProductController" method="post">
+                <form action="addProductController" method="post">
                     <div style="color: #db1d24; text-align: center; margin-bottom: 10px;">PRODUCT INFORMATION</div>
                     <input type="text" placeholder="Enter product name"  name="productName" required/>
 

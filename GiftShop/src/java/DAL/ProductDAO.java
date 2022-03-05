@@ -111,6 +111,7 @@ public class ProductDAO extends BaseDAO<Object> {
         }
         return products;
     }
+
     public ArrayList<Product> getProductByCategoryId(int id) {
         try {
             ArrayList<Product> products = new ArrayList<>();
@@ -144,7 +145,7 @@ public class ProductDAO extends BaseDAO<Object> {
         }
         return null;
     }
-    
+
     public void deleteProduct(int id) {
         try {
             String sql = "DELETE Product WHERE pid=?";
@@ -156,8 +157,8 @@ public class ProductDAO extends BaseDAO<Object> {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-      public void insertProduct(Product p) {
+
+    public void insertProduct(Product p) {
         try {
             String sql = "INSERT INTO Product(productname,productimg,productprice,productnote,cid)\n"
                     + "Values (?,?,?,?,?)";
@@ -167,6 +168,61 @@ public class ProductDAO extends BaseDAO<Object> {
             statement.setInt(3, p.getProductPrice());
             statement.setString(4, p.getProductNote());
             statement.setInt(5, p.getCid());
+
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Product getProductById(int id) {
+        try {
+            String sql = "SELECT  [pid]\n"
+                    + "      ,[productname]\n"
+                    + "      ,[productimg]\n"
+                    + "      ,[productprice]\n"
+                    + "      ,[productnote]\n"
+                    + "      ,[cid]\n"
+                    + "  FROM [Product]\n"
+                    + "  Where [pid]= ?\n"
+                    + "  ";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setPid(rs.getInt("pid"));
+                p.setProductName(rs.getString("productname"));
+                p.setProductImg(rs.getString("productimg"));
+                p.setProductPrice(rs.getInt("productprice"));
+                p.setProductNote(rs.getString("productnote"));
+                p.setCid(rs.getInt("cid"));
+                return p;
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void updateProduct(Product p) {
+        try {
+            String sql = "Update [Product] Set [productname] = ?,\n"
+                    + "[productimg] =?, \n"
+                    + "[productprice] = ?, \n"
+                    + "[productnote]=?,\n"
+                    + "[cid]= ? \n"
+                    + "Where [pid] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, p.getProductName());
+            statement.setString(2, p.getProductImg());
+            statement.setInt(3, p.getProductPrice());
+            statement.setString(4, p.getProductNote());
+            statement.setInt(5, p.getCid());
+            statement.setInt(6, p.getPid());
 
             statement.executeUpdate();
 

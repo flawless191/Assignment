@@ -1,0 +1,48 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Update Product</title>
+        <link rel="stylesheet" href="css/formStyle.css" />
+
+    </head>
+    <body>
+        <div class="form_page">
+            <div class="form">
+
+                <form action="updateProductController" method="post">
+                    <div style="color: #db1d24; text-align: center; margin-bottom: 10px;">PRODUCT INFORMATION</div>
+                    <label>ID</label>
+                    <input type="text" value="${product.pid}" name="pid"  readonly />
+                    <label>Name</label>
+
+                    <input type="text" value="${product.productName}" name="productName" required/>
+                    <label>Image</label>
+
+                    <input type="text" value="${product.productImg}" name="productImg" required/>
+                    <label>Price</label>
+
+                    <input type="text" value="${product.productPrice}" name="productPrice" required/>
+                    <label>Note</label>
+
+                    <input type="text" value="${product.productNote}" name="productNote" required/>
+                    <label>Category: </label>
+
+                    <select name="productCategory" id="sl_category" style="margin-bottom: 10px;">
+
+                        <c:forEach items="${listC}" var="c"> 
+                            <option value="${c.cid}" ${product.cid == c.cid ? "selected":""}>${c.categoryName}</option>
+
+                        </c:forEach>
+
+                    </select>
+                    <button>Update</button>
+
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -128,7 +128,7 @@
                                       src="${p.productImg}"
                                       class="img-responsive" /></td>
                             <td>${p.productPrice}$</td>
-                            <td><a href="updateController?id=${p.pid}" id="bt_update">
+                            <td><a href="updateProductController?pid=${p.pid}" id="bt_update">
                                     <img style="width:30px;"
                                          src="images/editIcon.png"
                                          class="img-responsive" />
