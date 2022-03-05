@@ -156,4 +156,22 @@ public class ProductDAO extends BaseDAO<Object> {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+      public void insertProduct(Product p) {
+        try {
+            String sql = "INSERT INTO Product(productname,productimg,productprice,productnote,cid)\n"
+                    + "Values (?,?,?,?,?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, p.getProductName());
+            statement.setString(2, p.getProductImg());
+            statement.setInt(3, p.getProductPrice());
+            statement.setString(4, p.getProductNote());
+            statement.setInt(5, p.getCid());
+
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

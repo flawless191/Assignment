@@ -104,7 +104,7 @@
             <div class="manager_bannerSet">
                 <div class="manager_left">
                     <b>Manager System</b> 
-                    <a href="#">AddProduct</a>
+                    <a href="addProductController">AddProduct</a>
                 </div>
 
             </div>

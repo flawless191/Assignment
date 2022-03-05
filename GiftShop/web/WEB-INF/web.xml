@@ -28,6 +28,10 @@
         <servlet-name>deleteProductController</servlet-name>
         <servlet-class>controller.deleteProductController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addProductController</servlet-name>
+        <servlet-class>controller.addProductController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>deleteProductController</servlet-name>
         <url-pattern>/deleteProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addProductController</servlet-name>
+        <url-pattern>/addProductController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
