@@ -217,4 +217,14 @@
 
         </div>
     </body>
+    <script>
+    function confirmDelete(id) {
+        if (confirm('Are you want to delete product have Id: ' + id+'?')) {
+            window.location.href='deleteProductController?pid='+id;
+            window.alert('Delete successfully!');
+            
+        }
+    }
+    
+</script>
 </html>
