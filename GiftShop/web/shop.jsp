@@ -28,10 +28,10 @@
                         <!-- HEADER SEARCH -->
                         <div class="header_search">
 
-                            <form action="/search" method="get" >
+                            <form action="searchProductController" method="post" >
                                 <div class="col-xs-9  col-lg-8 ">
 
-                                    <input id="search-field" name="q" type="search" placeholder="Search store..."
+                                    <input id="search-field" name="q" type="search" placeholder="Search store..." value="${textsearch}"
                                            />
                                 </div>
                                 <div class="col-xs-3 col-lg-4 ">
@@ -202,7 +202,19 @@
             <div class="row">
 
                 <c:choose>
+                    <c:when test="${issearch==true}">
+                        <div id="pagination">
 
+                            <span class="prev"><a title="" href="searchProductController?q=${textsearch}&page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
+                                    Previous</a></span>
+                                    <c:forEach begin="1" end="${totalpage}" var="pg">
+                                <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="searchProductController?q=${textsearch}&page=${pg}">${pg}</a></span>
+                                </c:forEach>
+
+                            <span class="next"><a title="" href="searchProductController?q=${textsearch}&page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
+                                    »</a></span>
+                        </div>
+                    </c:when>
 
                     <c:when test="${iscategory==true }">
                         <div id="pagination">
@@ -221,15 +233,15 @@
                     <c:otherwise>
                         <div id="pagination">
 
-                        <span class="prev"><a title="" href="shopController?page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
-                                Previous</a></span>
-                                <c:forEach begin="1" end="${totalpage}" var="pg">
-                            <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="shopController?page=${pg}">${pg}</a></span>
-                            </c:forEach>
-              
-                        <span class="next"><a title="" href="shopController?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
-                                »</a></span>
-                    </div>
+                            <span class="prev"><a title="" href="shopController?page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
+                                    Previous</a></span>
+                                    <c:forEach begin="1" end="${totalpage}" var="pg">
+                                <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="shopController?page=${pg}">${pg}</a></span>
+                                </c:forEach>
+
+                            <span class="next"><a title="" href="shopController?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
+                                    »</a></span>
+                        </div>
                     </c:otherwise>
 
 

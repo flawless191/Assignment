@@ -28,7 +28,7 @@
                         <!-- HEADER SEARCH -->
                         <div class="header_search">
 
-                            <form action="/search" method="get" >
+                            <form action="searchProductController" method="post"  >
                                 <div class="col-xs-9  col-lg-8 ">
 
                                     <input id="search-field" name="q" type="search" placeholder="Search store..."
