@@ -230,4 +230,126 @@ public class ProductDAO extends BaseDAO<Object> {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public int getTotalPage() {
+        int totalPage = 0;
+        try {
+            String sql = "SELECT COUNT(pid)as totalproduct From Product";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                int totalProduct = rs.getInt("totalproduct");
+                totalPage = totalProduct / 12;
+                if (totalProduct % 12 != 0) {
+                    totalPage++;
+                }
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return totalPage;
+    }
+    
+    public ArrayList<Product> getProductWithPaging(int inđex) {
+        ArrayList<Product> products = new ArrayList<>();
+        try {
+            String sqlquery = "SELECT * From (\n"
+                    + "SELECT  [pid]\n"
+                    + "      ,[productname]\n"
+                    + "      ,[productimg]\n"
+                    + "      ,[productprice]\n"
+                    + "      ,[productnote]\n"
+                    + "      ,[cid], ROW_NUMBER() OVER(ORDER BY [pid]) RN\n"
+                    + "  FROM [giftShopDb].[dbo].[Product] \n"
+                    + "  ) t\n"
+                    + "WHERE RN BETWEEN ? AND ?";
+
+            PreparedStatement statement = connection.prepareStatement(sqlquery);
+            statement.setInt(1, inđex * 12 - 11);
+            statement.setInt(2, inđex * 12);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setPid(rs.getInt("pid"));
+                p.setProductName(rs.getString("productname"));
+                p.setProductImg(rs.getString("productimg"));
+                p.setProductPrice(rs.getInt("productprice"));
+                p.setProductNote(rs.getString("productnote"));
+                p.setCid(rs.getInt("cid"));
+                products.add(p);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return products;
+    }
+    
+    public int getTotalPageByCategory(int cid) {
+        int totalPage = 0;
+        try {
+            String sql = " SELECT COUNT(pid)as totalproduct\n"
+                    + "  FROM [giftShopDb].[dbo].[Product] \n"
+                    + " Where cid =?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, cid);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                int totalProduct = rs.getInt("totalproduct");
+                totalPage = totalProduct / 12;
+                if (totalProduct % 12 != 0) {
+                    totalPage++;
+                }
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return totalPage;
+    }
+    
+    public ArrayList<Product> getProductByCategoryWithPaging(int cid, int inđex) {
+        ArrayList<Product> products = new ArrayList<>();
+        try {
+            String sqlquery = "SELECT * From (\n"
+                    + "SELECT  [pid]\n"
+                    + "      ,[productname]\n"
+                    + "      ,[productimg]\n"
+                    + "      ,[productprice]\n"
+                    + "      ,[productnote]\n"
+                    + "      ,[cid], ROW_NUMBER() OVER(ORDER BY [pid]) RN\n"
+                    + "  FROM [giftShopDb].[dbo].[Product] \n"
+                    + "   Where [cid] = ?\n"
+                    + "  ) t\n"
+                    + "WHERE RN BETWEEN ? AND ?";
+
+            PreparedStatement statement = connection.prepareStatement(sqlquery);
+            statement.setInt(1, cid);
+
+            statement.setInt(2, inđex * 12 - 11);
+            statement.setInt(3, inđex * 12);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setPid(rs.getInt("pid"));
+                p.setProductName(rs.getString("productname"));
+                p.setProductImg(rs.getString("productimg"));
+                p.setProductPrice(rs.getInt("productprice"));
+                p.setProductNote(rs.getString("productnote"));
+                p.setCid(rs.getInt("cid"));
+                products.add(p);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return products;
+    }
 }

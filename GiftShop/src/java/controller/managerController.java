@@ -61,8 +61,19 @@ public class managerController extends HttpServlet {
             throws ServletException, IOException {
         ArrayList<Product> products = new ArrayList<>();
         ProductDAO pd = new ProductDAO();
+        int totalPage = 0;
+        totalPage = pd.getTotalPage();
+        String pageCurrent = request.getParameter("page");
+        int pageC = 0;
+        if (pageCurrent == null) {
+            pageC=1;
+        } else {
+             pageC = Integer.parseInt(pageCurrent);
 
-        products = pd.getProducts();
+        }
+        products = pd.getProductWithPaging(pageC);
+        request.setAttribute("totalpage", totalPage);
+        request.setAttribute("pageCurrent", pageC);
         request.setAttribute("listP", products);
         request.getRequestDispatcher("manager.jsp").forward(request, response);
     }

@@ -96,7 +96,7 @@
                     <ul class="sf-menu">
 
                         <li class="first ${cid==null?"active":""} firstItem">
-                            <a  href="/">Shop</a>
+                            <a  href="shopController">Shop</a>
 
                         </li>
 
@@ -108,7 +108,7 @@
                             <ul class="sub-menu" style="width: 235px; ">
                                 <c:forEach items="${listC}" var="c" >
                                     <li style="width: 100%; float: none; "><a class="${cid==c.cid?"active":""}"
-                                            style="width: auto; float: none;" href="categoryController?cid=${c.cid}">${c.categoryName}</a>
+                                                                              style="width: auto; float: none;" href="categoryController?cid=${c.cid}">${c.categoryName}</a>
                                     </li>
                                 </c:forEach>
 
@@ -198,6 +198,43 @@
                         <img class="img-responsive" src="images/saleoff.png" />
                     </div>
                 </div>
+            </div>
+            <div class="row">
+
+                <c:choose>
+
+
+                    <c:when test="${iscategory==true }">
+                        <div id="pagination">
+
+                            <span class="prev"><a title="" href="categoryController?cid=${cid}&page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
+                                    Previous</a></span>
+                                    <c:forEach begin="1" end="${totalpage}" var="pg">
+                                <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="categoryController?cid=${cid}&page=${pg}">${pg}</a></span>
+                                </c:forEach>
+
+                            <span class="next"><a title="" href="categoryController?cid=${cid}&page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
+                                    »</a></span>
+                        </div>
+
+                    </c:when>
+                    <c:otherwise>
+                        <div id="pagination">
+
+                        <span class="prev"><a title="" href="shopController?page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
+                                Previous</a></span>
+                                <c:forEach begin="1" end="${totalpage}" var="pg">
+                            <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="shopController?page=${pg}">${pg}</a></span>
+                            </c:forEach>
+              
+                        <span class="next"><a title="" href="shopController?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
+                                »</a></span>
+                    </div>
+                    </c:otherwise>
+
+
+
+                </c:choose>
             </div>
         </div>
         <div class="container-fluid ">

@@ -167,7 +167,22 @@
 
                 </table>
             </div>
+            <div class="row">
 
+
+                <div id="pagination">
+
+                    <span class="prev"><a title="" href="managerController?page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
+                            Previous</a></span>
+                        <c:forEach begin="1" end="${totalpage}" var="pg">
+                        <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="managerController?page=${pg}">${pg}</a></span>
+                        </c:forEach>
+
+                    <span class="next"><a title="" href="managerController?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
+                            »</a></span>
+                </div>
+
+            </div>
         </div>
         <div class="container-fluid ">
             <div class="row">
@@ -242,13 +257,13 @@
         </div>
     </body>
     <script>
-    function confirmDelete(id) {
-        if (confirm('Are you want to delete product have Id: ' + id+'?')) {
-            window.location.href='deleteProductController?pid='+id;
-            window.alert('Delete successfully!');
-            
+        function confirmDelete(id) {
+            if (confirm('Are you want to delete product have Id: ' + id + '?')) {
+                window.location.href = 'deleteProductController?pid=' + id;
+                window.alert('Delete successfully!');
+
+            }
         }
-    }
-    
-</script>
+
+    </script>
 </html>

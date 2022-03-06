@@ -63,10 +63,23 @@ public class shopController extends HttpServlet {
             throws ServletException, IOException {
         ProductDAO pd = new ProductDAO();
         ArrayList<Product> products = new ArrayList<>();
-        products = pd.getProducts();
         ArrayList<Category> listCategory = new ArrayList<>();
         CategoryDAO cd = new CategoryDAO();
         listCategory = cd.getCategory();
+        int totalPage = 0;
+        totalPage = pd.getTotalPage();
+        String pageCurrent = request.getParameter("page");
+        int pageC = 0;
+        if (pageCurrent == null) {
+            pageC=1;
+        } else {
+             pageC = Integer.parseInt(pageCurrent);
+
+        }
+        
+        products = pd.getProductWithPaging(pageC);
+        request.setAttribute("totalpage", totalPage);
+        request.setAttribute("pageCurrent", pageC);
         request.setAttribute("listP", products);
         request.setAttribute("listC", listCategory);
         request.getRequestDispatcher("shop.jsp").forward(request, response);

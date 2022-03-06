@@ -40,7 +40,7 @@ public class categoryController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet categoryController</title>");            
+            out.println("<title>Servlet categoryController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet categoryController at " + request.getContextPath() + "</h1>");
@@ -61,7 +61,7 @@ public class categoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String cidString = request.getParameter("cid");
+        String cidString = request.getParameter("cid");
         int cid = Integer.parseInt(cidString);
         ArrayList<Category> listCategory = new ArrayList<>();
         CategoryDAO cd = new CategoryDAO();
@@ -69,10 +69,22 @@ public class categoryController extends HttpServlet {
 
         ArrayList<Product> products = new ArrayList<>();
         ProductDAO pd = new ProductDAO();
+        int totalPage = 0;
+        totalPage = pd.getTotalPageByCategory(cid);
+        String pageCurrent = request.getParameter("page");
+        int pageC = 0;
+        if (pageCurrent == null) {
+            pageC = 1;
+        } else {
+            pageC = Integer.parseInt(pageCurrent);
 
-        products = pd.getProductByCategoryId(cid);
+        }
+        boolean iscategory = true;
+        products = pd.getProductByCategoryWithPaging(cid, pageC);
         request.setAttribute("listC", listCategory);
-
+        request.setAttribute("totalpage", totalPage);
+        request.setAttribute("pageCurrent", pageC);
+        request.setAttribute("iscategory", iscategory);
         request.setAttribute("cid", cid);
         request.setAttribute("listP", products);
         request.getRequestDispatcher("shop.jsp").forward(request, response);

@@ -189,3 +189,28 @@ img{
         margin-bottom: 20px;
            
     }
+    
+    #pagination span {
+        display: block;
+        float: left;
+        border: 1px solid #dddddd;
+        border-width: 1px;
+    }
+    #pagination{
+        float: right;
+        margin-right: 1%;
+    }
+     #pagination span a
+     {
+        display: block;
+        padding: 7px 10px;
+        color: #000;
+        text-decoration: none;
+    }
+
+    #pagination span.current {
+        background: #db1d24;
+        font-weight: 700;
+   
+    }
+    
