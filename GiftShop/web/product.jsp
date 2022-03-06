@@ -9,6 +9,8 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/stylepage.css" />
         <link rel="stylesheet" href="css/dropdownstyle.css" />
+        <link rel="stylesheet" href="css/productStyle.css" />
+        <link rel="stylesheet" href="css/bestSellerStyle.css" />
 
     </head>
     <body>
@@ -137,119 +139,168 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 class="title">THE PRODUCT IN STORE</h2>
-                    <p class="combo-header-des">
-                        Quality belong with time!
-                    </p>
+            <div class="column_midle">
+                <div class="row col-md-9" >
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h2 class="title_p">PRODUCT</h2>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+
+                        <div id="product_image-container" class="col-sm-5">
+
+
+
+
+                            <div class="product_image">
+                                <img style="width: 420px;"
+                                     src="${product.productImg}"
+                                     class="img-responsive" />
+                            </div>
+
+
+
+
+
+
+                        </div><!-- #product-photos -->
+
+                        <div class="col-sm-7">
+                            <div  class="product_name">${product.productName}</div>
+
+
+
+
+
+                            <form action="/cart/add" method="post" class="form-horizontal"
+                                  id="product-actions">
+                                <div class="options clearfix">
+
+                                    <div id="product_price">
+                                        <label >Price:</label>  <span class="money_single" >${product.productPrice}$</span>
+
+
+                                    </div>
+
+                                    <input type="hidden"
+                                           name="pid" value="${product.pid}" class="form-control input-small" >
+
+                                    <div id="purchase">
+                                        <label >Qty: </label><input min="1" type="number" id="quantity"
+                                                                    name="quantity" value="1" class="form-control input-small">
+                                        <button id="add_cartProduct">Add to cart </button>
+                                    </div>
+
+                                </div><!-- /.options -->
+                            </form>
+
+
+
+
+                            <div class="product_details">
+                                <div class="product_type"> <label >Type: </label>
+                                    <c:forEach items="${listC}" var="c"> 
+                                        <c:if test="${product.cid == c.cid}"> <a href="/collections/types?q=Equipment"
+                                           title="Equipment">${c.categoryName}</a></c:if>
+                                    </c:forEach>
+                                </div>
+
+
+                            </div>
+
+                            <div id="product_description" class="rte" >
+                                <h4>Description:</h4>
+                                <p>${product.productNote}</p>
+                            </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="column_center">
+
+
+
+                        <h3>Other fine products</h3>
+                    </div>
+
+                    <div class="row">
+                        <c:forEach items= "${listP}" var="p">
+
+
+                            <div class="col-md-3">
+                                <div>
+                                    <a href="productController?pid=${p.pid}" > 
+
+                                        <img src="${p.productImg}" class="img-responsive" />
+                                    </a>
+                                        <div class="item">
+                                            <p class="item-title">${p.productName}</p>
+
+                                        </div>
+                                </div>
+                            </div>
+
+                        </c:forEach>
+                    </div>
+
+
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
+                <div class="column_right column col-md-3">
+                    <div class="widget widget__best-sellers">
+                        <h3 class="widget_header">Best Sellers</h3>
+                        <div class="widget_content">
+                            <div class="product-listing product-listing__bestsellers">
+                                <c:forEach items= "${listB}" var="b">
 
-                    <img style="width:100%;" class="img-responsive"
-                         src="images/evenBanner.png" />
-                </div>
-            </div>
+                                    <div class="product firstItem">
+
+                                        <div class="product_img">
+                                            <a href="productController?pid=${b.pid}">
+                                                <img src="${b.productImg}">
+                                            </a>
+                                        </div>
+
+                                        <div class="product_info">
+                                            <div class="product_name">
+                                                <a href="productController?pid=${b.pid}">${b.productName}</a>
+                                            </div>
+
+                                            <div class="product_desc">${b.productNote}
+                                            </div>
+
+                                            <div class="product_price">
+
+                                                <span class="money">${b.productPrice} $</span>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </c:forEach>
 
 
-            <div class="row">
-                <c:forEach items= "${listP}" var="p">
-                    <div class="col-md-3">
-                        <div>
-                            <a href="productController?pid=${p.pid}" > 
-                            <img src="${p.productImg}" class="img-responsive" />
-                            </a>
-                            <div class="item">
-                                <p class="item-title">${p.productName}</p>
-                                <p class="item-description">
-                                    Discount: <span style="font-weight: bold; margin-left: 10px">10%</span>
-                                </p>
-                                <p>
-                                    Price: 
-                                    <span style="color: #f72b2f; margin-left: 10px; font-size: 20px">${p.productPrice} $ </span>
-                                    <a href="#" id="add_cart">Add to cart </a>
-                                </p>
+
+
                             </div>
                         </div>
                     </div>
-                </c:forEach>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2>SPECIAL SALE OF FOR YOU</h2>
-                    <p class="combo-header-des">Limited time offer. Hurry up!</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div>
-                        <img class="img-responsive" src="images/saleoff.png" />
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div>
-                        <img class="img-responsive" src="images/freeship.png" />
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div>
-                        <img class="img-responsive" src="images/saleoff.png" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <c:choose>
-                    <c:when test="${issearch==true}">
-                        <div id="pagination">
-
-                            <span class="prev"><a title="" href="searchProductController?q=${textsearch}&page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
-                                    Previous</a></span>
-                                    <c:forEach begin="1" end="${totalpage}" var="pg">
-                                <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="searchProductController?q=${textsearch}&page=${pg}">${pg}</a></span>
-                                </c:forEach>
-
-                            <span class="next"><a title="" href="searchProductController?q=${textsearch}&page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
-                                    »</a></span>
-                        </div>
-                    </c:when>
-
-                    <c:when test="${iscategory==true }">
-                        <div id="pagination">
-
-                            <span class="prev"><a title="" href="categoryController?cid=${cid}&page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
-                                    Previous</a></span>
-                                    <c:forEach begin="1" end="${totalpage}" var="pg">
-                                <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="categoryController?cid=${cid}&page=${pg}">${pg}</a></span>
-                                </c:forEach>
-
-                            <span class="next"><a title="" href="categoryController?cid=${cid}&page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
-                                    »</a></span>
-                        </div>
-
-                    </c:when>
-                    <c:otherwise>
-                        <div id="pagination">
-
-                            <span class="prev"><a title="" href="shopController?page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
-                                    Previous</a></span>
-                                    <c:forEach begin="1" end="${totalpage}" var="pg">
-                                <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="shopController?page=${pg}">${pg}</a></span>
-                                </c:forEach>
-
-                            <span class="next"><a title="" href="shopController?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
-                                    »</a></span>
-                        </div>
-                    </c:otherwise>
 
 
 
-                </c:choose>
-            </div>
+
+
+
         </div>
         <div class="container-fluid ">
             <div class="row">

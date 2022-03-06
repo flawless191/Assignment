@@ -29,6 +29,9 @@
 }
 .item-title {
     border-bottom: 2px dashed rgb(151, 149, 149);
+     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .item-description {
     margin-bottom: 20px;
