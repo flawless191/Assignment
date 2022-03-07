@@ -37,7 +37,7 @@ public class CategoryDAO extends BaseDAO<Object> {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listCategory;
     }

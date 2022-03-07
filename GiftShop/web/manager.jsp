@@ -56,7 +56,7 @@
                                 <a href="login.jsp" id="customer_login_link">Log in</a>
                                 <a href="signup.jsp" id="customer_register_link">Create an account</a>
 
-                                <a class="header_cart" href="#" id="customer_cart_link"><b>Cart</b><span
+                                <a class="header_cart" href="showCartController" id="customer_cart_link"><b>Cart</b><span
 
 
                                         class="cart-items"></span></a>
@@ -65,7 +65,7 @@
                                 <a href="login" id="customer_login_link">Log out</a>
                                 <a href="homePageController" id="customer_register_link">Hello: ${sessionScope.acc.user}</a>
 
-                                <a class="header_cart" href="#" id="customer_cart_link"><b>Cart</b><span
+                                <a class="header_cart" href="showCartController" id="customer_cart_link"><b>Cart</b><span
 
 
                                         class="cart-items"></span></a>
@@ -75,7 +75,7 @@
                                 <a href="homePageController" id="customer_register_link">Hello: ${sessionScope.acc.user}</a>
                                 <a href="managerController" id="customer_manager_link">Manager</a>
 
-                                <a class="header_cart" href="#" id="customer_cart_link"><b>Cart</b><span
+                                <a class="header_cart" href="showCartController" id="customer_cart_link"><b>Cart</b><span
 
 
                                         class="cart-items"></span></a>

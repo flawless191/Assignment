@@ -44,6 +44,14 @@
         <servlet-name>productController</servlet-name>
         <servlet-class>controller.productController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cartController</servlet-name>
+        <servlet-class>controller.cartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>showCartController</servlet-name>
+        <servlet-class>controller.showCartController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>productController</servlet-name>
         <url-pattern>/productController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cartController</servlet-name>
+        <url-pattern>/cartController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showCartController</servlet-name>
+        <url-pattern>/showCartController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
