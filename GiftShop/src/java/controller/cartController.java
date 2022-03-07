@@ -129,7 +129,59 @@ public class cartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        String pidString = request.getParameter("pid");
+        int pid = Integer.parseInt(pidString);
+        ProductDAO pd = new ProductDAO();
+        Product p = pd.getProductById(pid);
+        String amountString = request.getParameter("quantity");
+        int amount = Integer.parseInt(amountString);
+        CartDAO cartDAO = new CartDAO();
+        int cartId = cartDAO.getIdOfLastCart() + 1;
+        Cart c = new Cart();
+        //if user login
+        if (session.getAttribute("acc") != null) {
+            Account a = (Account) session.getAttribute("acc");
+
+            c.setCartid(cartId);
+            c.setAmount(amount);
+            c.setProduct(p);
+            c.setAccountid(a.getAid());
+        } // if not login set account id =0
+        else {
+            c.setCartid(cartId);
+            c.setAmount(amount);
+            c.setProduct(p);
+            c.setAccountid(0);
+        }
+        // check listcart on session null or not 
+        if (session.getAttribute("listcart") != null) {
+            ArrayList<Cart> listCart = (ArrayList<Cart>) session.getAttribute("listcart");
+            boolean sameProduct = false;
+            for (Cart cart : listCart) {
+                //check new product exist in listcart or not
+                if (cart.getProduct().getPid() == pid) {
+                    cart.setAmount(cart.getAmount() + amount);
+                    sameProduct = true;
+                }
+            }
+            //if not the same product add new product to list
+            if (!sameProduct) {
+                listCart.add(c);
+            }
+            session.setAttribute("listcart", listCart);
+            session.setAttribute("number", listCart.size());
+            response.sendRedirect("showCartController");
+        } else {
+
+            ArrayList<Cart> listCart = new ArrayList<>();
+            listCart.add(c);
+            session.setAttribute("listcart", listCart);
+            session.setAttribute("number", listCart.size());
+
+            response.sendRedirect("showCartController");
+
+        }
     }
 
     /**

@@ -177,7 +177,7 @@
 
 
 
-                            <form action="/cart/add" method="post" class="form-horizontal"
+                            <form action="cartController" method="post" class="form-horizontal"
                                   id="product-actions">
                                 <div class="options clearfix">
 

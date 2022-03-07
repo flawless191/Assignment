@@ -51,6 +51,7 @@ font: 20px Roboto;
     color: white;
     padding: 7px;
     border-radius: 5px;
+    border: none;
 }
 .product_type a {
     color: #000;
