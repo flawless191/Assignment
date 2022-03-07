@@ -166,7 +166,7 @@
                                             <div class="col-md-9">
 
                                                 <div class="item_remove pull-right">
-                                                    <a href="#"><img
+                                                    <a href="deleteCartController?pid=${c.product.pid}"><img
                                                             style="width:30px;"
                                                             src="images/deleteCartIcon.png" /></i></a>
                                                 </div>
@@ -406,5 +406,11 @@
 
 
     </body>
+    <script>
 
+        function changeAmount(pid) {
+            var amount = document.getElementById("updates_cart" + pid).value;
+            window.location.href = 'updateCartController?pid=' + pid + '&amount=' + amount;
+        }
+    </script>
 </html>
