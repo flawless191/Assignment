@@ -139,7 +139,7 @@
                         <div id="main_content" class="col-sm-6">
 
                             <div class="fieldset">
-                                <form action="#" method="post">
+                                <form action="checkOutController" method="post">
                                     <div class="field__head">
 
                                         <h1>
@@ -227,9 +227,9 @@
                                             </div>
                                         </c:forEach>
                                         <div class="payprice">
-                                        <div class="disco"><h3>Discount: <span class="money" >15$</span></h3></div>
+                                        <div class="disco"><h3>Discount: <span class="money" >${discount}</span></h3></div>
 
-                                        <div class="subtt"><h3>SubTotal: <span class="money" >15$</span></h3></div>
+                                        <div class="subtt"><h3>SubTotal: <span class="money" >${subtotal}</span></h3></div>
                                         </div>
 
 
@@ -322,11 +322,5 @@
 
 
     </body>
-    <script>
-
-        function changeAmount(pid) {
-            var amount = document.getElementById("updates_cart" + pid).value;
-            window.location.href = 'updateCartController?pid=' + pid + '&amount=' + amount;
-        }
-    </script>
+   
 </html>

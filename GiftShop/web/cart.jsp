@@ -225,7 +225,7 @@
                                         <a href="shopController">Continue shopping</a>
                                         <span class="or">or</span>
 
-                                        <a href="#">Check out</a>
+                                        <a href="checkOutController">Check out</a>
 
 
                                     </div>
