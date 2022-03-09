@@ -76,7 +76,7 @@ public class showCartController extends HttpServlet {
                 total = total + cart.getAmount() * cart.getProduct().getProductPrice();
             }
 
-            discount =  Math.ceil(total * 0.1 * 10.0) / 10.0 ;
+            discount =  Math.floor(total * 0.1 * 10.0) / 10.0;
             double subtotal = total - discount;
             String discountMess = "Discount 10%";
             String subtotalMess = "Subtotal";

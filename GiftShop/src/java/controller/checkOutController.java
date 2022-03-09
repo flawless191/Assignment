@@ -79,8 +79,8 @@ public class checkOutController extends HttpServlet {
             for (Cart cart : listCart) {
                 total = total + cart.getAmount() * cart.getProduct().getProductPrice();
             }
-
-            discount = Math.ceil(total * 0.1 * 10.0) / 10.0;
+           
+            discount = Math.floor(total * 0.1 * 10.0) / 10.0;
             double subtotal = total - discount;
             request.setAttribute("discount", discount + "$");
             request.setAttribute("subtotal", subtotal + "$");
@@ -177,6 +177,14 @@ public class checkOutController extends HttpServlet {
                 oda.insertOrder(order);
             }
         }
+        // add data to cart table
+        ArrayList<Cart> listCart = (ArrayList<Cart>) session.getAttribute("listcart");
+        CartDAO cartDAO = new CartDAO();
+        for (Cart cart : listCart) {
+            cartDAO.insertCart(cart);            
+        }      
+        session.removeAttribute("listcart");
+        response.sendRedirect("homePageController");
 
     }
 

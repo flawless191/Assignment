@@ -6,6 +6,7 @@
 package controller;
 
 import DAL.CartDAO;
+import DAL.OrderDAO;
 import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Account;
 import model.Cart;
 import model.Product;
 
@@ -71,7 +71,8 @@ public class cartController extends HttpServlet {
         Product p = pd.getProductById(pid);
         int amount = 1;
         CartDAO cartDAO = new CartDAO();
-        int cartId = cartDAO.getIdOfLastCart() + 1;
+        OrderDAO od = new OrderDAO();
+        int cartId = od.getLastIdOfOrder() + 1;
         Cart c = new Cart();
 
         c.setCartid(cartId);
@@ -126,7 +127,8 @@ public class cartController extends HttpServlet {
         String amountString = request.getParameter("quantity");
         int amount = Integer.parseInt(amountString);
         CartDAO cartDAO = new CartDAO();
-        int cartId = cartDAO.getIdOfLastCart() + 1;
+        OrderDAO od = new OrderDAO();
+        int cartId = od.getLastIdOfOrder() + 1;
         Cart c = new Cart();
 
         c.setCartid(cartId);

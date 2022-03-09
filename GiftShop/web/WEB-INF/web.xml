@@ -60,6 +60,10 @@
         <servlet-name>deleteCartController</servlet-name>
         <servlet-class>controller.deleteCartController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>checkoutController</servlet-name>
+        <servlet-class>controller.checkOutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>deleteCartController</servlet-name>
         <url-pattern>/deleteCartController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkoutController</servlet-name>
+        <url-pattern>/checkOutController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
