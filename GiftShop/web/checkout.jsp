@@ -151,7 +151,7 @@
 
                                         <input name="checkoutFName" class="field__input "
                                                id="checkout_shipping_firstname" type="text" size="30" placeholder="First Name" required>
-                                        <input name="checkouLName" class="field__input "
+                                        <input name="checkoutLName" class="field__input "
                                                id="checkout_shipping_lastname" type="text" size="30" placeholder="Last Name" required>
 
                                     </div>
