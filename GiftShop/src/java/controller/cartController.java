@@ -42,7 +42,7 @@ public class cartController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet cartController</title>");            
+            out.println("<title>Servlet cartController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet cartController at " + request.getContextPath() + "</h1>");
@@ -73,21 +73,10 @@ public class cartController extends HttpServlet {
         CartDAO cartDAO = new CartDAO();
         int cartId = cartDAO.getIdOfLastCart() + 1;
         Cart c = new Cart();
-        //if user login
-        if (session.getAttribute("acc") != null) {
-            Account a = (Account) session.getAttribute("acc");
 
-            c.setCartid(cartId);
-            c.setAmount(amount);
-            c.setProduct(p);
-            c.setAccountid(a.getAid());
-        } // if not login set account id =0
-        else {
-            c.setCartid(cartId);
-            c.setAmount(amount);
-            c.setProduct(p);
-            c.setAccountid(0);
-        }
+        c.setCartid(cartId);
+        c.setAmount(amount);
+        c.setProduct(p);
 
         // check listcart on session null or not 
         if (session.getAttribute("listcart") != null) {
@@ -139,21 +128,11 @@ public class cartController extends HttpServlet {
         CartDAO cartDAO = new CartDAO();
         int cartId = cartDAO.getIdOfLastCart() + 1;
         Cart c = new Cart();
-        //if user login
-        if (session.getAttribute("acc") != null) {
-            Account a = (Account) session.getAttribute("acc");
 
-            c.setCartid(cartId);
-            c.setAmount(amount);
-            c.setProduct(p);
-            c.setAccountid(a.getAid());
-        } // if not login set account id =0
-        else {
-            c.setCartid(cartId);
-            c.setAmount(amount);
-            c.setProduct(p);
-            c.setAccountid(0);
-        }
+        c.setCartid(cartId);
+        c.setAmount(amount);
+        c.setProduct(p);
+
         // check listcart on session null or not 
         if (session.getAttribute("listcart") != null) {
             ArrayList<Cart> listCart = (ArrayList<Cart>) session.getAttribute("listcart");

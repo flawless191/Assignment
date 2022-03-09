@@ -14,17 +14,17 @@ public class Cart {
     int cartid;
     Product product;
     int amount;
-    int accountid;
 
     public Cart() {
     }
 
-    public Cart(int cartid, Product product, int amount, int accountid) {
+    public Cart(int cartid, Product product, int amount) {
         this.cartid = cartid;
         this.product = product;
         this.amount = amount;
-        this.accountid = accountid;
     }
+
+ 
 
     public int getCartid() {
         return cartid;
@@ -50,12 +50,5 @@ public class Cart {
         this.product = product;
     }
 
-    public int getAccountid() {
-        return accountid;
-    }
-
-    public void setAccountid(int accountid) {
-        this.accountid = accountid;
-    }
-
+   
 }
