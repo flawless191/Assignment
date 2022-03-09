@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Account;
 import model.Cart;
 import model.Customer;
 
@@ -95,7 +96,7 @@ public class checkOutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String firstname = request.getParameter("checkoutFName");
         String lastname = request.getParameter("checkoutFName");
         String address = request.getParameter("checkoutAddress");
@@ -107,12 +108,14 @@ public class checkOutController extends HttpServlet {
         cust.setAddress(address);
         cust.setCity(city);
         cust.setPhone(phone);
-        
+
         CustomerDAO custdao = new CustomerDAO();
-        custdao.insertCustomer(cust);
+        Customer custcheck = custdao.getCustomer(cust);
+        //check new customer has been saved in database before or not
+        if (custcheck == null) {
+            custdao.insertCustomer(cust);
 
-        
-
+        }
 
     }
 
