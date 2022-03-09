@@ -6,6 +6,7 @@
 package controller;
 
 import DAL.CartDAO;
+import DAL.CustomerAccountDAO;
 import DAL.CustomerDAO;
 import DAL.OrderDAO;
 import java.io.IOException;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Cart;
 import model.Customer;
+import model.CustomerAccount;
 
 /**
  *
@@ -96,9 +98,9 @@ public class checkOutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        HttpSession session = request.getSession();
         String firstname = request.getParameter("checkoutFName");
-        String lastname = request.getParameter("checkoutFName");
+        String lastname = request.getParameter("checkoutLName");
         String address = request.getParameter("checkoutAddress");
         String city = request.getParameter("checkoutCity");
         String phone = request.getParameter("checkoutPhone");
@@ -114,8 +116,41 @@ public class checkOutController extends HttpServlet {
         //check new customer has been saved in database before or not
         if (custcheck == null) {
             custdao.insertCustomer(cust);
+            //if user login
+            if (session.getAttribute("acc") != null) {
+                CustomerAccountDAO Cad = new CustomerAccountDAO();
+                Account a = (Account) session.getAttribute("acc");
+                int lastCustId = custdao.getLastIdOfCustomer();
+                CustomerAccount ca = Cad.getCustomerAndAccountByCustIdAndAccId(lastCustId, a.getAid());
+                // if customerid and account id not exist in CustomerAccount table before
+                if (ca == null) {
+                    Cad.addCustomerAndAccount(lastCustId, a.getAid());
+                }
+               
+            }//if user not login
+            else {
+                
+            }
 
+        } else {
+            //if user login
+            if (session.getAttribute("acc") != null) {
+                CustomerAccountDAO Cad = new CustomerAccountDAO();
+                Account a = (Account) session.getAttribute("acc");
+                CustomerAccount ca = Cad.getCustomerAndAccountByCustIdAndAccId(custcheck.getCustid(), a.getAid());
+                // if customerid and account id not exist in CustomerAccount table before
+                if (ca == null) {
+                    Cad.addCustomerAndAccount(custcheck.getCustid(), a.getAid());
+                }
+               
+            }//if user not login
+            else {
+               
+            }
         }
+        
+        
+       
 
     }
 

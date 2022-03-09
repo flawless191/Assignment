@@ -71,5 +71,31 @@ public class CustomerDAO extends BaseDAO<Object> {
         }
         return null;
     }
+    
+     
+     public int getLastIdOfCustomer() {
+        int lastCustId = 0;
+        try {
+            String sql = "Select TOP 1 custid From Customer\n"
+                    + "Order By custid Desc";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                lastCustId = rs.getInt("custid");
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lastCustId;
+    }
+     
+     public static void main(String[] args) {
+        CustomerDAO cd = new CustomerDAO();
+        int lid= cd.getLastIdOfCustomer();
+         System.out.println("Last "+lid);
+    }
    
 }
