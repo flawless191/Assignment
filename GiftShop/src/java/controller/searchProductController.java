@@ -64,6 +64,7 @@ public class searchProductController extends HttpServlet {
         String nameSearch = request.getParameter("q");
         ProductDAO pd = new ProductDAO();
         int totalPage = 0;
+        int pagesize = 12;
         String pageCurrent = request.getParameter("page");
         int pageC = 0;
         if (pageCurrent == null) {
@@ -72,9 +73,9 @@ public class searchProductController extends HttpServlet {
             pageC = Integer.parseInt(pageCurrent);
 
         }
-        totalPage = pd.getTotalPageSreachByName(nameSearch);
+        totalPage = pd.getTotalPageSreachByName(nameSearch,pagesize);
         ArrayList<Product> products = new ArrayList<>();
-        products = pd.getProductSearchByNameWithPaging(nameSearch, pageC);
+        products = pd.getProductSearchByNameWithPaging(nameSearch, pageC,pagesize);
         boolean issearch = true;
         ArrayList<Category> listCategory = new ArrayList<>();
         CategoryDAO cd = new CategoryDAO();
@@ -104,6 +105,7 @@ public class searchProductController extends HttpServlet {
         String nameSearch = request.getParameter("q");
         ProductDAO pd = new ProductDAO();
         int totalPage = 0;
+        int pagesize = 12;
         String pageCurrent = request.getParameter("page");
         int pageC = 0;
         if (pageCurrent == null) {
@@ -112,9 +114,9 @@ public class searchProductController extends HttpServlet {
             pageC = Integer.parseInt(pageCurrent);
 
         }
-        totalPage = pd.getTotalPageSreachByName(nameSearch);
+        totalPage = pd.getTotalPageSreachByName(nameSearch,pagesize);
         ArrayList<Product> products = new ArrayList<>();
-        products = pd.getProductSearchByNameWithPaging(nameSearch, pageC);
+        products = pd.getProductSearchByNameWithPaging(nameSearch, pageC, pagesize);
         boolean issearch = true;
         ArrayList<Category> listCategory = new ArrayList<>();
         CategoryDAO cd = new CategoryDAO();

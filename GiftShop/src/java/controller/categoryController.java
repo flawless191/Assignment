@@ -70,7 +70,8 @@ public class categoryController extends HttpServlet {
         ArrayList<Product> products = new ArrayList<>();
         ProductDAO pd = new ProductDAO();
         int totalPage = 0;
-        totalPage = pd.getTotalPageByCategory(cid);
+        int pagesize = 12;
+        totalPage = pd.getTotalPageByCategory(cid,pagesize);
         String pageCurrent = request.getParameter("page");
         int pageC = 0;
         if (pageCurrent == null) {
@@ -80,7 +81,7 @@ public class categoryController extends HttpServlet {
 
         }
         boolean iscategory = true;
-        products = pd.getProductByCategoryWithPaging(cid, pageC);
+        products = pd.getProductByCategoryWithPaging(cid, pageC,pagesize);
         request.setAttribute("listC", listCategory);
         request.setAttribute("totalpage", totalPage);
         request.setAttribute("pageCurrent", pageC);

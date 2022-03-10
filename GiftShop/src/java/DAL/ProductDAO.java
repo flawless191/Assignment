@@ -231,7 +231,7 @@ public class ProductDAO extends BaseDAO<Object> {
         }
     }
     
-    public int getTotalPage() {
+    public int getTotalPage(int pagesize) {
         int totalPage = 0;
         try {
             String sql = "SELECT COUNT(pid)as totalproduct From Product";
@@ -240,8 +240,8 @@ public class ProductDAO extends BaseDAO<Object> {
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 int totalProduct = rs.getInt("totalproduct");
-                totalPage = totalProduct / 12;
-                if (totalProduct % 12 != 0) {
+                totalPage = totalProduct / pagesize;
+                if (totalProduct % pagesize != 0) {
                     totalPage++;
                 }
 
@@ -253,7 +253,7 @@ public class ProductDAO extends BaseDAO<Object> {
         return totalPage;
     }
     
-    public ArrayList<Product> getProductWithPaging(int inđex) {
+    public ArrayList<Product> getProductWithPaging(int index,int pagesize) {
         ArrayList<Product> products = new ArrayList<>();
         try {
             String sqlquery = "SELECT * From (\n"
@@ -268,8 +268,8 @@ public class ProductDAO extends BaseDAO<Object> {
                     + "WHERE RN BETWEEN ? AND ?";
 
             PreparedStatement statement = connection.prepareStatement(sqlquery);
-            statement.setInt(1, inđex * 12 - 11);
-            statement.setInt(2, inđex * 12);
+            statement.setInt(1, index * pagesize - (pagesize-1));
+            statement.setInt(2, index * pagesize);
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
@@ -289,7 +289,7 @@ public class ProductDAO extends BaseDAO<Object> {
         return products;
     }
     
-    public int getTotalPageByCategory(int cid) {
+    public int getTotalPageByCategory(int cid,int pagesize) {
         int totalPage = 0;
         try {
             String sql = " SELECT COUNT(pid)as totalproduct\n"
@@ -301,8 +301,8 @@ public class ProductDAO extends BaseDAO<Object> {
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 int totalProduct = rs.getInt("totalproduct");
-                totalPage = totalProduct / 12;
-                if (totalProduct % 12 != 0) {
+                totalPage = totalProduct / pagesize;
+                if (totalProduct % pagesize != 0) {
                     totalPage++;
                 }
 
@@ -314,7 +314,7 @@ public class ProductDAO extends BaseDAO<Object> {
         return totalPage;
     }
     
-    public ArrayList<Product> getProductByCategoryWithPaging(int cid, int inđex) {
+    public ArrayList<Product> getProductByCategoryWithPaging(int cid, int index, int pagesize) {
         ArrayList<Product> products = new ArrayList<>();
         try {
             String sqlquery = "SELECT * From (\n"
@@ -332,8 +332,8 @@ public class ProductDAO extends BaseDAO<Object> {
             PreparedStatement statement = connection.prepareStatement(sqlquery);
             statement.setInt(1, cid);
 
-            statement.setInt(2, inđex * 12 - 11);
-            statement.setInt(3, inđex * 12);
+            statement.setInt(2, index * pagesize - (pagesize-1));
+            statement.setInt(3, index * pagesize);
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
@@ -353,7 +353,7 @@ public class ProductDAO extends BaseDAO<Object> {
         return products;
     }
     
-    public int getTotalPageSreachByName(String nameToSearch) {
+    public int getTotalPageSreachByName(String nameToSearch, int pagesize) {
         int totalPage = 0;
         try {
             String sql = " SELECT  COUNT(pid)as totalproduct\n"
@@ -365,8 +365,8 @@ public class ProductDAO extends BaseDAO<Object> {
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 int totalProduct = rs.getInt("totalproduct");
-                totalPage = totalProduct / 12;
-                if (totalProduct % 12 != 0) {
+                totalPage = totalProduct / pagesize;
+                if (totalProduct % pagesize != 0) {
                     totalPage++;
                 }
 
@@ -378,7 +378,7 @@ public class ProductDAO extends BaseDAO<Object> {
         return totalPage;
     }
     
-     public ArrayList<Product> getProductSearchByNameWithPaging(String nameToSearch, int inđex) {
+     public ArrayList<Product> getProductSearchByNameWithPaging(String nameToSearch, int index, int pagesize) {
         ArrayList<Product> products = new ArrayList<>();
         try {
             String sqlquery = "SELECT * From (\n"
@@ -396,8 +396,8 @@ public class ProductDAO extends BaseDAO<Object> {
             PreparedStatement statement = connection.prepareStatement(sqlquery);
             statement.setString(1, "%" + nameToSearch + "%");
 
-            statement.setInt(2, inđex * 12 - 11);
-            statement.setInt(3, inđex * 12);
+            statement.setInt(2, index * pagesize - (pagesize-1));
+            statement.setInt(3, index * pagesize);
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
