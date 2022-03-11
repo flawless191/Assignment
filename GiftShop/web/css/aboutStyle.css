@@ -1,0 +1,20 @@
+.container{
+    color: rgb(51, 51, 51);
+}
+
+
+.about_head span{
+
+    line-height: 107%; font-size: 24px;
+        color: #000;
+    font-weight: 700;
+}
+
+.MsoNormal{
+    background: white;
+    margin: 0in 0in 10px;
+    line-height: normal; 
+    font-family: Calibri, sans-serif; 
+    font-size: 15px;
+}
+

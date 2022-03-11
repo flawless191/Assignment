@@ -64,6 +64,10 @@
         <servlet-name>checkoutController</servlet-name>
         <servlet-class>controller.checkOutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>aboutusController</servlet-name>
+        <servlet-class>controller.aboutusController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>checkoutController</servlet-name>
         <url-pattern>/checkOutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>aboutusController</servlet-name>
+        <url-pattern>/aboutusController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
