@@ -64,7 +64,7 @@
                                 <a href="login.jsp" id="customer_login_link">Log in</a>
                                 <a href="signup.jsp" id="customer_register_link">Create an account</a>
 
-                                <a class="header_cart" href="#" id="customer_cart_link"><b>Cart</b><span
+                                <a class="header_cart" href="showCartController" id="customer_cart_link"><b>Cart</b><span
 
 
                                         class="cart-items"></span></a>
@@ -73,7 +73,7 @@
                                 <a href="login" id="customer_login_link">Log out</a>
                                 <a href="homePageController" id="customer_register_link">Hello: ${sessionScope.acc.user}</a>
 
-                                <a class="header_cart" href="#" id="customer_cart_link"><b>Cart</b><span
+                                <a class="header_cart" href="showCartController" id="customer_cart_link"><b>Cart</b><span
 
 
                                         class="cart-items"></span></a>
@@ -83,7 +83,7 @@
                                 <a href="homePageController" id="customer_register_link">Hello: ${sessionScope.acc.user}</a>
                                 <a href="managerController" id="customer_manager_link">Manager</a>
 
-                                <a class="header_cart" href="#" id="customer_cart_link"><b>Cart</b><span
+                                <a class="header_cart" href="showCartController" id="customer_cart_link"><b>Cart</b><span
 
 
                                         class="cart-items"></span></a>
@@ -104,7 +104,7 @@
                     <ul class="sf-menu">
 
 
-                        <li class="active firstItem">
+                        <li class=" firstItem">
                             <a  href="homePageController">Home</a>
 
                         </li>
@@ -342,32 +342,26 @@
                     <h3>Menu</h3>
                     <ul class="list">
 
-                        <li class="firstItem"><a title="" href="/test1.html">Home</a></li>
+                        <li class="firstItem"><a title="" href="homePageController">Home</a></li>
 
-                        <li><a title="" href="/collections/all">Shop</a></li>
-
-                        <li><a title="" href="/blogs/blog">Blog</a></li>
-
-                        <li><a title="" href="/pages/about-us">About Us</a></li>
+                        <li><a title="" href="shopController">Shop</a></li>
 
 
+                        <li><a title="" href="#">About Us</a></li>
 
-                        <li class="lastItem"><a title="" href="/pages/contact-us">Contact us</a></li>
+
+
+                        <li class="lastItem"><a title="" href="#">Contact us</a></li>
 
                     </ul>
                 </div>
                 <div class="col-md-3  custom_footer custom_footer2">
                     <h3>Collections</h3>
                     <ul class="list">
+                        <c:forEach items="${listC}" var="c" >
+                            <li> <a title="" href="categoryController?cid=${c.cid}">${c.categoryName}</a></li>
 
-                        <li class=" firstItem"><a title="" href="/collections/brands">Fashion</a>
-                        </li>
-
-                        <li><a title="" href="/collections/kids">Equiment</a></li>
-
-                        <li><a title="" href="/collections/women-s">Accessories</a></li>
-
-                        <li><a title="" href="/collections/footwear">Other</a></li>
+                        </c:forEach>
 
 
 
@@ -380,11 +374,8 @@
                     <h3>Information</h3>
                     <ul class="list">
 
-                        <li class="firstItem"><a title="" href="/account">My account</a></li>
 
-                        <li><a title="" href="/account/addresses">My addresses</a></li>
-
-                        <li class="lastItem"><a title="" href="/cart">My cart</a></li>
+                        <li class="lastItem"><a title="" href="showCartController">My cart</a></li>
 
                     </ul>
                 </div>
@@ -393,10 +384,10 @@
                     <h3>Contacts</h3>
                     <ul>
 
-                        <li class="firstItem">4578 Marmora Road, Glasgow D04 89GR Tel 1(234) 567-9842
+                        <li class="firstItem">0210 Ram Road,  Royal Crescent Tel 136-567-9842
                         </li>
 
-                        <li class="lastItem">Email: <a href="mailto:info@demolink.org">shopGift@gmail.com</a></li>
+                        <li class="lastItem">Email: <a href="https://mail.google.com/">shopGift@gmail.com</a></li>
                     </ul>
                 </div>
             </div>

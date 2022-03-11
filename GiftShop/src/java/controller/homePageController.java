@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAL.CategoryDAO;
 import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Category;
 import model.Product;
 
 /**
@@ -66,7 +68,10 @@ public class homePageController extends HttpServlet {
         productsNew = pd.get4NewProducts();
         productsBest = pd.get4BestSell();
         products = pd.getProducts();
-
+        ArrayList<Category> listCategory = new ArrayList<>();
+        CategoryDAO cd = new CategoryDAO();
+        listCategory = cd.getCategory();
+        request.setAttribute("listC", listCategory);
         request.setAttribute("listPNew", productsNew);
         request.setAttribute("listBest", productsBest);
         request.setAttribute("listP", products);
