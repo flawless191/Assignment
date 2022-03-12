@@ -1,18 +1,24 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Gift Shop</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/stylepage.css" />
         <link rel="stylesheet" href="css/dropdownstyle.css" />
-        <link rel="stylesheet" href="css/productStyle.css" />
         <link rel="stylesheet" href="css/bestSellerStyle.css" />
+        <link rel="stylesheet" href="css/checkoutStyle.css" />
+
+
 
     </head>
+
     <body>
         <div class="container-fluid">
             <div class="row">
@@ -33,7 +39,7 @@
                             <form action="searchProductController" method="post" >
                                 <div class="col-xs-9  col-lg-8 ">
 
-                                    <input id="search-field" name="q" type="search" placeholder="Search store..." value="${textsearch}"
+                                    <input id="search-field" name="q" type="search" placeholder="Search store..."
                                            />
                                 </div>
                                 <div class="col-xs-3 col-lg-4 ">
@@ -97,28 +103,15 @@
                 <div class="clearfix" id="navigation">
                     <ul class="sf-menu">
 
-                        <li class="first ${cid==null?"active":""} firstItem">
-                            <a  href="shopController">Shop</a>
+
+                        <li class=" firstItem">
+                            <a  href="homePageController">Home</a>
 
                         </li>
-
 
                         <li class="has-dropdown">
-                            <a title="" class="${cid!=null?"active":""}" >Catalog</a>
-
-
-                            <ul class="sub-menu" style="width: 235px; ">
-                                <c:forEach items="${listC}" var="c" >
-                                    <li style="width: 100%; float: none; "><a class="${cid==c.cid?"active":""}"
-                                                                              style="width: auto; float: none;" href="categoryController?cid=${c.cid}">${c.categoryName}</a>
-                                    </li>
-                                </c:forEach>
-
-
-                            </ul>
-
+                            <a  href="shopController">Shop</a>
                         </li>
-
 
 
                         <li>
@@ -127,7 +120,7 @@
                         </li>
 
 
-                        <li class="last lastItem">
+                        <li class="last lastItem active">
                             <a  href="contactusController">Contact us</a>
 
                         </li>
@@ -138,170 +131,121 @@
 
         </div>
 
+
         <div class="container">
-            <div class="column_midle">
-                <div class="row col-md-9" >
-                    <div class="row">
-                        <div class="col-md-12 ">
-                            <h2 class="title_p">PRODUCT</h2>
+            <div class="row  ">
 
-                        </div>
-                    </div>
+                <div class="column_center">
+                    <div id="main_content" class="col-sm-9">
 
+                        <div class="fieldset">
+                            <form action="contactusController" method="post" onsubmit="myFunction()">
+                                <div class="field__head">
 
+                                    <h1>
+                                        Contact Us
+                                    </h1>
+                                </div>
 
-                    <div class="row">
+                                <div class="field__Name">
 
-                        <div id="product_image-container" class="col-sm-5">
+                                    <input name="contactFName" class="field__input "
+                                           id="checkout_shipping_firstname" type="text" size="30" placeholder="First Name" required>
+                                    <input name="contactLName" class="field__input "
+                                           id="checkout_shipping_lastname" type="text" size="30" placeholder="Last Name" required>
 
+                                </div>
 
+                                <div class="field__email">
 
+                                    <input name="contactEmail" class="field__input "
+                                           id="checkout_shipping_email" type="email" size="50" placeholder="Email" required>
 
-                            <div class="product_image">
-                                <img style="width: 420px;"
-                                     src="${product.productImg}"
-                                     class="img-responsive" />
-                            </div>
-
-
-
-
-
-
-                        </div><!-- #product-photos -->
-
-                        <div class="col-sm-7">
-                            <div  class="product_name">${product.productName}</div>
+                                </div>
 
 
 
+                                <div class="field__Phone">
 
+                                    <input name="contactPhone" class="field__input "
+                                           id="checkout_shipping_address_phone" type="text" size="30" placeholder="Phone" required>
 
-                            <form action="cartController" method="post" class="form-horizontal"
-                                  id="product-actions">
-                                <div class="options clearfix">
+                                </div>
+                                <div class="field__content">
 
-                                    <div id="product_price">
-                                        <label >Price:</label>  <span class="money_single" >${product.productPrice}$</span>
+                                    <textarea name="contactMessage" class="field__input "
+                                              id="checkout_shipping_address_message" type="text"  placeholder="Your Message..." style="height: 100px;" required></textarea>
 
+                                </div>
 
-                                    </div>
+                                <div class="submit_address">
 
-                                    <input type="hidden"
-                                           name="pid" value="${product.pid}" class="form-control input-small" >
+                                    <button class="bt_send"  >Send</button>
+                                    <input class="bt_send" type="reset" value="Clear">
 
-                                    <div id="purchase">
-                                        <label >Qty: </label><input min="1" type="number" id="quantity"
-                                                                    name="quantity" value="1" class="form-control input-small">
-                                        <button id="add_cartProduct">Add to cart </button>
-                                    </div>
-
-                                </div><!-- /.options -->
+                                </div>
                             </form>
 
+                        </div>
+
+
+                    </div>
 
 
 
-                            <div class="product_details">
-                                <div class="product_type"> <label >Type: </label>
-                                    <c:forEach items="${listC}" var="c"> 
-                                        <c:if test="${product.cid == c.cid}"> <a href="/collections/types?q=Equipment"
-                                           title="Equipment">${c.categoryName}</a></c:if>
+
+
+
+
+                    <div class="column_right column col-md-3">
+                        <div class="widget widget__best-sellers">
+                            <h3 class="widget_header">Best Sellers</h3>
+                            <div class="widget_content">
+                                <div class="product-listing product-listing__bestsellers">
+                                    <c:forEach items= "${listB}" var="b">
+
+                                        <div class="product firstItem">
+
+                                            <div class="product_img">
+                                                <a href="productController?pid=${b.pid}">
+                                                    <img src="${b.productImg}">
+                                                </a>
+                                            </div>
+
+                                            <div class="product_info">
+                                                <div class="product_name">
+                                                    <a href="productController?pid=${b.pid}">${b.productName}</a>
+                                                </div>
+
+                                                <div class="product_desc">${b.productNote}
+                                                </div>
+
+                                                <div class="product_price">
+
+                                                    <span class="money">${b.productPrice} $</span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </c:forEach>
+
+
+
+
                                 </div>
-
-
-                            </div>
-
-                            <div id="product_description" class="rte" >
-                                <h4>Description:</h4>
-                                <p>${product.productNote}</p>
-                            </div>
-
-
-
-
-                        </div>
-
-
-                    </div>
-                    <div class="column_center">
-
-
-
-                        <h3>Other fine products</h3>
-                    </div>
-
-                    <div class="row">
-                        <c:forEach items= "${listP}" var="p">
-
-
-                            <div class="col-md-3">
-                                <div>
-                                    <a href="productController?pid=${p.pid}" > 
-
-                                        <img src="${p.productImg}" class="img-responsive" />
-                                    </a>
-                                        <div class="item">
-                                            <p class="item-title">${p.productName}</p>
-
-                                        </div>
-                                </div>
-                            </div>
-
-                        </c:forEach>
-                    </div>
-
-
-                </div>
-                <div class="column_right column col-md-3">
-                    <div class="widget widget__best-sellers">
-                        <h3 class="widget_header">Best Sellers</h3>
-                        <div class="widget_content">
-                            <div class="product-listing product-listing__bestsellers">
-                                <c:forEach items= "${listB}" var="b">
-
-                                    <div class="product firstItem">
-
-                                        <div class="product_img">
-                                            <a href="productController?pid=${b.pid}">
-                                                <img src="${b.productImg}">
-                                            </a>
-                                        </div>
-
-                                        <div class="product_info">
-                                            <div class="product_name">
-                                                <a href="productController?pid=${b.pid}">${b.productName}</a>
-                                            </div>
-
-                                            <div class="product_desc">${b.productNote}
-                                            </div>
-
-                                            <div class="product_price">
-
-                                                <span class="money">${b.productPrice} $</span>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </c:forEach>
-
-
-
-
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
-
-
-
-
-
-
         </div>
+
+
+
+
         <div class="container-fluid ">
             <div class="row">
 
@@ -364,5 +308,12 @@
 
 
         </div>
+
+<script>
+function myFunction() {
+  alert("The information has been sent!");
+}
+</script>
     </body>
+
 </html>

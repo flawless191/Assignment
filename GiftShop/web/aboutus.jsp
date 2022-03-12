@@ -115,13 +115,13 @@
 
 
                         <li class="active">
-                            <a  href="#">About Us</a>
+                            <a  href="aboutusController">About Us</a>
 
                         </li>
 
 
                         <li class="last lastItem">
-                            <a  href="#">Contact us</a>
+                            <a  href="contactusController">Contact us</a>
 
                         </li>
 
@@ -381,11 +381,11 @@
                         <li><a title="" href="shopController">Shop</a></li>
 
 
-                        <li><a title="" href="#">About Us</a></li>
+                        <li><a title="" href="aboutusController">About Us</a></li>
 
 
 
-                        <li class="lastItem"><a title="" href="#">Contact us</a></li>
+                        <li class="lastItem"><a title="" href="contactusController">Contact us</a></li>
 
                     </ul>
                 </div>
