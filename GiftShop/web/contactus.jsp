@@ -150,16 +150,16 @@
                                 <div class="field__Name">
 
                                     <input name="contactFName" class="field__input "
-                                           id="checkout_shipping_firstname" type="text" size="30" placeholder="First Name" pattern="[a-zA-Z]{2,}" title="First name contains only letter and have at least 2 characters." required>
+                                           id="checkout_shipping_firstname" type="text"  placeholder="First Name" pattern="[a-zA-Z]{2,}" title="First name contains only letter and have at least 2 characters." required>
                                     <input name="contactLName" class="field__input "
-                                           id="checkout_shipping_lastname" type="text" size="30" placeholder="Last Name" pattern="[a-zA-Z]{2,}" title="Last name contains only letter and have at least 2 characters." required>
+                                           id="checkout_shipping_lastname" type="text"  placeholder="Last Name" pattern="[a-zA-Z]{2,}" title="Last name contains only letter and have at least 2 characters." required>
 
                                 </div>
 
                                 <div class="field__email">
 
                                     <input name="contactEmail" class="field__input "
-                                           id="checkout_shipping_email" type="email" size="50" placeholder="Email" pattern="[A-Za-z]+[A-Za-z0-9]*@[A-Za-z]+(\.[A-Za-z]+)" title="Please input email with the form like this e.g me@example.com" required>
+                                           id="checkout_shipping_email" type="email"  placeholder="Email" pattern="[A-Za-z]+[A-Za-z0-9]*@[A-Za-z]+(\.[A-Za-z]+)" title="Please input email with the form like this e.g me@example.com" required>
 
                                 </div>
 
@@ -168,7 +168,7 @@
                                 <div class="field__Phone">
 
                                     <input name="contactPhone" class="field__input "
-                                           id="checkout_shipping_address_phone" type="text" size="30" placeholder="Phone" pattern="(09|03|07|08|05){1}([0-9]{8})" title="Phone number must start with 09 or 03 or 07 or 08 or 05. And must have exactly 10 characters." required>
+                                           id="checkout_shipping_address_phone" type="text"  placeholder="Phone" pattern="(09|03|07|08|05)([0-9]{8})" title="Phone number must start with 09 or 03 or 07 or 08 or 05. And must have exactly 10 characters." required>
 
                                 </div>
                                 <div class="field__content">

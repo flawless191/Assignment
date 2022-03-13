@@ -13,13 +13,13 @@
     <body>
         <div class="login_signup">
             <div class="form">
-                <form class="signup_form" action="signup" method="post">
+                <form class="signup_form" action="signup1" method="post">
                     <div class="alert_danger" role="alert">
                         ${alertMess}
                     </div>
-                    <input type="text" placeholder="name" name="username"/>
-                    <input type="password" placeholder="password" name="password"/>
-                    <input type="password" placeholder="reenter password" name="repassword"/>
+                    <input type="text" placeholder="Username" name="username"  pattern="^[a-zA-Z][a-zA-Z0-9]{2,15}" title="User name must be start with letter and contains only letter and number. And must have at least 3 characters and max 16 characters." required/>
+                    <input type="password" placeholder="Password" name="password"  pattern=".{3,16}" title="Password must have at least 3 characters and max 16 characters."  required/>
+                    <input type="password" placeholder="Confirm password" name="repassword"  pattern=".{3,16}" title="Password must have at least 3 characters and max 16 characters."  required/>
                     <button>create</button>
                     <p class="message">Already registered? <a href="login.jsp">Sign In</a></p>
                 </form>

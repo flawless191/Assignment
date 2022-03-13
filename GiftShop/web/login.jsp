@@ -18,8 +18,8 @@
                     <div class="alert_danger" role="alert">
                         ${alertMess}
                     </div>
-                    <input type="text" placeholder="username" name="username"/>
-                    <input type="password" placeholder="password" name="password"/>
+                    <input type="text" placeholder="Username" name="username" required/>
+                    <input type="password" placeholder="Password" name="password" required/>
                     <button>login</button>
                     <p class="message">Not registered? <a href="signup.jsp">Create an account</a></p>
                 </form>
