@@ -135,114 +135,114 @@
         <div class="container">
             <div class="row  ">
 
-                    <div class="column_center">
-                        <div id="main_content" class="col-sm-6">
+                <div class="column_center">
+                    <div id="main_content" class="col-sm-6">
 
-                            <div class="fieldset">
-                                <form action="checkOutController" method="post" onsubmit="checkOut()">
-                                    <div class="field__head">
+                        <div class="fieldset">
+                            <form action="checkOutController1" method="post" onsubmit="checkOut()">
+                                <div class="field__head">
 
-                                        <h1>
-                                            Shipping Address
-                                        </h1>
-                                    </div>
-
-                                    <div class="field__Name">
-
-                                        <input name="checkoutFName" class="field__input "
-                                               id="checkout_shipping_firstname" type="text" size="30" placeholder="First Name" pattern="[a-zA-Z]{2,}" title="First name contains only letter and have at least 2 characters." required>
-                                        <input name="checkoutLName" class="field__input "
-                                               id="checkout_shipping_lastname" type="text" size="30" placeholder="Last Name" pattern="[a-zA-Z]{2,}" title="Last name contains only letter and have at least 2 characters." required>
-
-                                    </div>
-
-                                    <div class="field__Address">
-
-                                        <input name="checkoutAddress" class="field__input "
-                                               id="checkout_shipping_address" type="text" size="30" placeholder="Address" pattern=".{5,}" title="Address must have at least 5 characters."  required>
-
-                                    </div>
-
-                                    <div class="field__City">
-
-                                        <input name="checkoutCity" class="field__input "
-                                               id="checkout_shipping_address_city" type="text" size="30" placeholder="City" pattern="[a-zA-Z\s]{3,}" title="City contains only letter and space. And must have at least 3 characters." required>
-
-                                    </div>
-
-
-                                    <div class="field__Phone">
-
-                                        <input name="checkoutPhone" class="field__input "
-                                               id="checkout_shipping_address_phone" type="text" size="10" placeholder="Phone" pattern="(09|03|07|08|05){1}([0-9]{8})" title="Phone number must start with 09 or 03 or 07 or 08 or 05. And must have exactly 10 characters." required>
-
-                                    </div>
-
-
-                                    <div class="submit_address">
-
-                                        <button class="bt_send"  >Send</button>
-
-                                    </div>
-                                </form>
-
-                            </div>
-
-
-                        </div>
-
-
-
-
-
-
-
-                        <div class="column_right column col-sm-6">
-                            <div class="widget widget__best-sellers">
-                                <h3 class="widget_header">Your Product</h3>
-                                <div class="widget_content">
-                                    <div class="product-listing product-listing__bestsellers">
-                                        <c:forEach items= "${listB}" var="b">
-
-                                            <div class="product firstItem col-lg-12" >
-
-                                                <div class="product_img">
-                                                    <a href="#">
-                                                        <img src="${b.product.productImg}">
-                                                    </a>
-                                                </div>
-
-                                                <div class="product_info">
-                                                    <div class="product_name">
-                                                        <a href="#">${b.product.productName}</a>
-                                                    </div>
-
-                                                    <div class="product_desc">Qty: ${b.amount}
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="product_pricecheckout">Price: ${b.product.productPrice}$</div>
-                                                 <div class="product_total">Total: ${b.product.productPrice *b.amount }$</div>
-                                            </div>
-                                        </c:forEach>
-                                        <div class="payprice">
-                                        <div class="disco"><h3>Discount: <span class="money" >${discount}</span></h3></div>
-
-                                        <div class="subtt"><h3>SubTotal: <span class="money" >${subtotal}</span></h3></div>
-                                        </div>
-
-
-
-                                    </div>
+                                    <h1>
+                                        Shipping Address
+                                    </h1>
                                 </div>
-                            </div>
+
+                                <div class="field__Name">
+
+                                    <input name="checkoutFName" class="field__input "
+                                           id="checkout_shipping_firstname" type="text" size="30" placeholder="First Name" pattern="[a-zA-Z]{2,}" title="First name contains only letter and have at least 2 characters." required>
+                                    <input name="checkoutLName" class="field__input "
+                                           id="checkout_shipping_lastname" type="text" size="30" placeholder="Last Name" pattern="[a-zA-Z]{2,}" title="Last name contains only letter and have at least 2 characters." required>
+
+                                </div>
+
+                                <div class="field__Address">
+
+                                    <input name="checkoutAddress" class="field__input "
+                                           id="checkout_shipping_address" type="text" size="30" placeholder="Address" pattern=".{5,}" title="Address must have at least 5 characters."  required>
+
+                                </div>
+
+                                <div class="field__City">
+
+                                    <input name="checkoutCity" class="field__input "
+                                           id="checkout_shipping_address_city" type="text" size="30" placeholder="City" pattern="[a-zA-Z\s]{3,}" title="City contains only letter and space. And must have at least 3 characters." required>
+
+                                </div>
+
+
+                                <div class="field__Phone">
+
+                                    <input name="checkoutPhone" class="field__input "
+                                           id="checkout_shipping_address_phone" type="text" size="10" placeholder="Phone" pattern="(09|03|07|08|05)([0-9]{8})" title="Phone number must start with 09 or 03 or 07 or 08 or 05. And must have exactly 10 characters." required>
+
+                                </div>
+
+
+                                <div class="submit_address">
+
+                                    <button class="bt_send"  >Send</button>
+
+                                </div>
+                            </form>
 
                         </div>
 
 
                     </div>
+
+
+
+
+
+
+
+                    <div class="column_right column col-sm-6">
+                        <div class="widget widget__best-sellers">
+                            <h3 class="widget_header">Your Product</h3>
+                            <div class="widget_content">
+                                <div class="product-listing product-listing__bestsellers">
+                                    <c:forEach items= "${listB}" var="b">
+
+                                        <div class="product firstItem col-lg-12" >
+
+                                            <div class="product_img">
+                                                <a href="productController?pid=${b.product.pid}">
+                                                    <img src="${b.product.productImg}">
+                                                </a>
+                                            </div>
+
+                                            <div class="product_info">
+                                                <div class="product_name">
+                                                    <a href="productController?pid=${b.product.pid}">${b.product.productName}</a>
+                                                </div>
+
+                                                <div class="product_desc">Qty: ${b.amount}
+                                                </div>
+
+
+                                            </div>
+                                            <div class="product_pricecheckout">Price: ${b.product.productPrice}$</div>
+                                            <div class="product_total">Total: ${b.product.productPrice *b.amount }$</div>
+                                        </div>
+                                    </c:forEach>
+                                    <div class="payprice">
+                                        <div class="disco"><h3>Discount: <span class="money" >${discount}</span></h3></div>
+
+                                        <div class="subtt"><h3>SubTotal: <span class="money" >${subtotal}</span></h3></div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                 </div>
+            </div>
         </div>
 
 
@@ -310,12 +310,12 @@
 
 
         </div>
-
+        <script>
+            function checkOut() {
+                alert("Check out successful!");
+            }
+        </script>
 
     </body>
-   <script>
-function checkOut() {
-  alert("Check out successful!");
-}
-</script>
+
 </html>

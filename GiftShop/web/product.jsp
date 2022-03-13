@@ -205,7 +205,7 @@
                             <div class="product_details">
                                 <div class="product_type"> <label >Type: </label>
                                     <c:forEach items="${listC}" var="c"> 
-                                        <c:if test="${product.cid == c.cid}"> <a href="/collections/types?q=Equipment"
+                                        <c:if test="${product.cid == c.cid}"> <a href="categoryController?cid=${product.cid}"
                                            title="Equipment">${c.categoryName}</a></c:if>
                                     </c:forEach>
                                 </div>

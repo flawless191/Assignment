@@ -13,7 +13,7 @@
         <div class="form_page">
             <div class="form">
 
-                <form action="updateProductController" method="post">
+                <form action="updateProductController" method="post" onsubmit="updateMessage()">
                     <div style="color: #db1d24; text-align: center; margin-bottom: 10px;">PRODUCT INFORMATION</div>
                     <label>ID</label>
                     <input type="text" value="${product.pid}" name="pid"  readonly />
@@ -22,10 +22,10 @@
                     <input type="text" value="${product.productName}" name="productName" required/>
                     <label>Image</label>
 
-                    <input type="text" value="${product.productImg}" name="productImg" required/>
+                    <input type="url" value="${product.productImg}" name="productImg" required/>
                     <label>Price</label>
 
-                    <input type="text" value="${product.productPrice}" name="productPrice" required/>
+                    <input type="number" value="${product.productPrice}" name="productPrice" min="1" required/>
                     <label>Note</label>
 
                     <input type="text" value="${product.productNote}" name="productNote" required/>
@@ -44,5 +44,10 @@
                 </form>
             </div>
         </div>
+        <script>
+            function updateMessage() {
+                alert("Update product successful!");
+            }
+        </script>
     </body>
 </html>

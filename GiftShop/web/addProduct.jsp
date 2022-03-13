@@ -14,13 +14,13 @@
         <div class="form_page">
             <div class="form">
 
-                <form action="addProductController" method="post">
+                <form action="addProductController" method="post" onsubmit="addProductMessage()">
                     <div style="color: #db1d24; text-align: center; margin-bottom: 10px;">PRODUCT INFORMATION</div>
                     <input type="text" placeholder="Enter product name"  name="productName" required/>
 
-                    <input type="text" placeholder="Enter product image link" name="productImg" required/>
+                    <input type="url" placeholder="Enter product image link" name="productImg" required/>
 
-                    <input type="text" placeholder="Enter product price" name="productPrice" required/>
+                    <input type="number" placeholder="Enter product price" name="productPrice" min="1"  required/>
 
                     <input type="text" placeholder="Note" name="productNote" required/>
                     <label>Category: </label>
@@ -37,5 +37,11 @@
                 </form>
             </div>
         </div>
+        <script>
+            function addProductMessage() {
+                alert("Add product successful!");
+            }
+        </script>
     </body>
+
 </html>
