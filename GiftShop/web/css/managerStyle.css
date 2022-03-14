@@ -40,6 +40,7 @@ thead td{
    border-radius: 25px;
    margin-bottom: 20px;
     text-decoration: none;
+    margin-top: -20px;
 }
 
 .manager_bannerSet .manager_left b{
@@ -61,4 +62,7 @@ thead td{
     
     margin-top: 0px;
     
+}
+.button_searchbyid{
+padding: 2px 2px 0px 2px;
 }

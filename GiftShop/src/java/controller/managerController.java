@@ -90,7 +90,23 @@ public class managerController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String pidString = request.getParameter("pid");
+        int pid = Integer.parseInt(pidString);
+        ProductDAO pd = new ProductDAO();
+        Product p = new Product();
+        p = pd.getProductById(pid);
+        //if found product
+        if (p != null) {
+            ArrayList<Product> products = new ArrayList<>();
+            products.add(p);
+            request.setAttribute("searchMessage", pid);
+            request.setAttribute("listP", products);
+            request.getRequestDispatcher("manager.jsp").forward(request, response);
+        } else {
+            request.setAttribute("searchMessage", "No products found");
+            request.getRequestDispatcher("manager.jsp").forward(request, response);
+        }
+
     }
 
     /**

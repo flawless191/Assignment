@@ -128,6 +128,21 @@
             <div class="manager_bannerSet">
                 <div class="manager_left">
                     <b>Manager System</b> 
+                    <div class="manager_search">
+
+                        <form action="managerController" method="post">
+                            <div class="">
+
+                                <input id="search-byid" name="pid" type="search" placeholder="Search product by id..." value="${searchMessage}" pattern="[0-9]{1,}" title="Please input number only."required/>
+
+                                <button type="submit" class="button_searchbyid">
+
+                                    Search
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
                     <a href="addProductController">AddProduct</a>
                 </div>
 
@@ -167,22 +182,24 @@
 
                 </table>
             </div>
-            <div class="row">
+            <c:if test="${totalpage!=null}">                   
+                <div class="row">
 
 
-                <div id="pagination">
+                    <div id="pagination">
 
-                    <span class="prev"><a title="" href="managerController?page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
-                            Previous</a></span>
-                        <c:forEach begin="1" end="${totalpage}" var="pg">
-                        <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="managerController?page=${pg}">${pg}</a></span>
-                        </c:forEach>
+                        <span class="prev"><a title="" href="managerController?page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
+                                Previous</a></span>
+                                <c:forEach begin="1" end="${totalpage}" var="pg">
+                            <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="managerController?page=${pg}">${pg}</a></span>
+                            </c:forEach>
 
-                    <span class="next"><a title="" href="managerController?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
-                            »</a></span>
+                        <span class="next"><a title="" href="managerController?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
+                                »</a></span>
+                    </div>
+
                 </div>
-
-            </div>
+            </c:if> 
         </div>
         <div class="container-fluid ">
             <div class="row">
