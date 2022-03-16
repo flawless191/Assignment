@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAL.CategoryDAO;
 import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Category;
 import model.Product;
 
 /**
@@ -62,7 +64,7 @@ public class managerController extends HttpServlet {
         ArrayList<Product> products = new ArrayList<>();
         ProductDAO pd = new ProductDAO();
         int totalPage = 0;
-        int pagesize = 12;
+        int pagesize = 6;
         totalPage = pd.getTotalPage(pagesize);
         String pageCurrent = request.getParameter("page");
         int pageC = 0;
@@ -72,7 +74,11 @@ public class managerController extends HttpServlet {
             pageC = Integer.parseInt(pageCurrent);
 
         }
-        products = pd.getProductWithPaging(pageC,pagesize);
+        products = pd.getProductWithPaging(pageC, pagesize);
+        ArrayList<Category> listCategory = new ArrayList<>();
+        CategoryDAO cd = new CategoryDAO();
+        listCategory = cd.getCategory();
+        request.setAttribute("listC", listCategory);
         request.setAttribute("totalpage", totalPage);
         request.setAttribute("pageCurrent", pageC);
         request.setAttribute("listP", products);
@@ -95,15 +101,20 @@ public class managerController extends HttpServlet {
         ProductDAO pd = new ProductDAO();
         Product p = new Product();
         p = pd.getProductById(pid);
+        ArrayList<Category> listCategory = new ArrayList<>();
+        CategoryDAO cd = new CategoryDAO();
+        listCategory = cd.getCategory();
         //if found product
         if (p != null) {
             ArrayList<Product> products = new ArrayList<>();
             products.add(p);
             request.setAttribute("searchMessage", pid);
             request.setAttribute("listP", products);
+            request.setAttribute("listC", listCategory);
             request.getRequestDispatcher("manager.jsp").forward(request, response);
         } else {
             request.setAttribute("searchMessage", "No products found");
+            request.setAttribute("listC", listCategory);
             request.getRequestDispatcher("manager.jsp").forward(request, response);
         }
 

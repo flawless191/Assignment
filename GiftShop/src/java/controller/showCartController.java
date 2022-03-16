@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAL.CategoryDAO;
 import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Cart;
+import model.Category;
 import model.Product;
 
 /**
@@ -40,7 +42,7 @@ public class showCartController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet showCartController</title>");            
+            out.println("<title>Servlet showCartController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet showCartController at " + request.getContextPath() + "</h1>");
@@ -67,7 +69,10 @@ public class showCartController extends HttpServlet {
 
         productsBest = pd.get4BestSell();
         request.setAttribute("listB", productsBest);
-
+        ArrayList<Category> listCategory = new ArrayList<>();
+        CategoryDAO cd = new CategoryDAO();
+        listCategory = cd.getCategory();
+        
         if (session.getAttribute("listcart") != null) {
             ArrayList<Cart> listCart = (ArrayList<Cart>) session.getAttribute("listcart");
             double discount = 0;
@@ -75,21 +80,33 @@ public class showCartController extends HttpServlet {
             for (Cart cart : listCart) {
                 total = total + cart.getAmount() * cart.getProduct().getProductPrice();
             }
-
-            discount =  Math.floor(total * 0.1 * 10.0) / 10.0;
-            double subtotal = total - discount;
-            String discountMess = "Discount 10%";
-            String subtotalMess = "Subtotal";
-            request.setAttribute("discountMess", discountMess);
-            request.setAttribute("subtotalMess", subtotalMess);
-            request.setAttribute("discount", discount+"$");
-            request.setAttribute("subtotal", subtotal+"$");
-            request.getRequestDispatcher("cart.jsp").forward(request, response);
+            //if user login
+            if (session.getAttribute("acc") != null) {
+                discount = Math.floor(total * 0.1 * 10.0) / 10.0;
+                double subtotal = total - discount;
+                String discountMess = "Discount 10%";
+                String subtotalMess = "Subtotal";
+                request.setAttribute("discountMess", discountMess);
+                request.setAttribute("subtotalMess", subtotalMess);
+                request.setAttribute("discount", discount + "$");
+                request.setAttribute("subtotal", subtotal + "$");
+                request.setAttribute("listC", listCategory);
+                request.getRequestDispatcher("cart.jsp").forward(request, response);
+            } else {
+                String discountMess = "Discount";
+                String subtotalMess = "Subtotal";
+                request.setAttribute("discountMess", discountMess);
+                request.setAttribute("subtotalMess", subtotalMess);
+                request.setAttribute("subtotal", total + "$");
+                request.setAttribute("listC", listCategory);
+                request.getRequestDispatcher("cart.jsp").forward(request, response);
+            }
         } else {
             String discountMess = "YOUR CART IS CURRENTLY EMPTY!";
             String subtotalMess = "Click on Continue shopping to shop.";
             request.setAttribute("discountMess", discountMess);
-            request.setAttribute("subtotalMess", subtotalMess);
+            request.setAttribute("subtotalMess", subtotalMess);        
+            request.setAttribute("listC", listCategory);
             request.getRequestDispatcher("cart.jsp").forward(request, response);
 
         }

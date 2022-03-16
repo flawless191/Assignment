@@ -54,7 +54,7 @@
                         <c:choose>
                             <c:when test="${sessionScope.acc==null}">
                                 <a href="login.jsp" id="customer_login_link">Log in</a>
-                                <a href="signup.jsp" id="customer_register_link">Create an account</a>
+                                <a href="signup.jsp" id="customer_register_link">SIGN UP & SAVE 10%</a>
 
                                 <a class="header_cart" href="showCartController" id="customer_cart_link"><b>Cart</b><span
 
@@ -96,7 +96,7 @@
                     <ul class="sf-menu">
 
 
-                        <li class="active firstItem">
+                        <li class="firstItem">
                             <a  href="homePageController">Home</a>
 
                         </li>
@@ -190,8 +190,11 @@
 
                         <span class="prev"><a title="" href="managerController?page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
                                 Previous</a></span>
-                                <c:forEach begin="1" end="${totalpage}" var="pg">
-                            <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="managerController?page=${pg}">${pg}</a></span>
+                            <c:if test="${pageCurrent-1>0}">
+                                <span class=""><a title="" href="managerController?page=${pageCurrent-1}">${pageCurrent-1}</a></span>
+                            </c:if>
+                            <c:forEach begin="${pageCurrent}" end="${pageCurrent+2<=totalpage?pageCurrent+2:totalpage}" var="pg">
+                                <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="managerController?page=${pg}">${pg}</a></span>
                             </c:forEach>
 
                         <span class="next"><a title="" href="managerController?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
@@ -199,7 +202,7 @@
                     </div>
 
                 </div>
-            </c:if> 
+            </c:if>                                                          
         </div>
         <div class="container-fluid ">
             <div class="row">

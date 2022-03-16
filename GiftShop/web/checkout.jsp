@@ -62,7 +62,7 @@
                         <c:choose>
                             <c:when test="${sessionScope.acc==null}">
                                 <a href="login.jsp" id="customer_login_link">Log in</a>
-                                <a href="signup.jsp" id="customer_register_link">Create an account</a>
+                                <a href="signup.jsp" id="customer_register_link">SIGN UP & SAVE 10%</a>
 
                                 <a class="header_cart" href="showCartController" id="customer_cart_link"><b>Cart</b><span
 
@@ -139,7 +139,7 @@
                     <div id="main_content" class="col-sm-6">
 
                         <div class="fieldset">
-                            <form action="checkOutController1" method="post" onsubmit="checkOut()">
+                            <form action="checkOutController" method="post" onsubmit="checkOut()">
                                 <div class="field__head">
 
                                     <h1>
