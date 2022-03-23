@@ -12,6 +12,21 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/stylepage.css" />
         <link rel="stylesheet" href="css/dropdownstyle.css" />
+        <link rel="stylesheet" href="css/bestSellerStyle.css" />
+        <link rel="stylesheet" href="css/checkoutStyle.css" />
+
+        <c:if test="${updatesuccess==true}">
+            <script >
+                alert('Change password successful! ');
+                if (confirm('Conntinue login?')) {
+                    window.location.href = 'homePageController';
+
+                } else {
+                    window.location.href = 'login';
+
+                }
+            </script>
+        </c:if>
 
     </head>
 
@@ -100,7 +115,7 @@
                     <ul class="sf-menu">
 
 
-                        <li class="active firstItem">
+                        <li class=" firstItem">
                             <a  href="homePageController">Home</a>
 
                         </li>
@@ -124,159 +139,133 @@
                     </ul>
                 </div>
             </div>
-            <div class="rowBanner">
-                <div class="col-md-12 banner123">
-                    <img style="height: 520px; width: 100%;" class="img-responsive"
-                         src="images/ManUnitedbanner.jpg" />
-                </div>
-            </div>
+
         </div>
 
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 style="color: #f72b2f; text-transform:uppercase;"  >New Product</h2>
-                    <img style="width:100%;" class="img-responsive" src="images/evenBanner.png" />
-                </div>
-            </div>
+            <div class="row  ">
 
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="service-row">
-                        <a href="productController?pid=${listPNew[0].pid}" > 
-                            <img style="width:100%;" class="img-responsive" src="${listPNew[0].productImg}" />
-                        </a>
-                        <div class="service-item">
-                            <h3>Beauty and Cute</h3>
-                            <p>Always in style!</p>
+                <div class="column_center">
+                    <div id="main_content" class="col-sm-8">
+
+                        <div class="fieldset">
+                            <form action="changePassword" method="post" >
+                                <div class="field__head">
+
+                                    <h1>
+                                        Change Password
+                                    </h1>
+                                </div>
+
+                                <div class="label_change1" style=" float: left;
+                                     width: 40%; margin-top: 15px; font: 700 20px Roboto;     color: #888888;">
+
+
+                                    User Name
+                                </div>
+                                <div class="label_change2" style=" float: left;
+                                     width: 57%; margin-left: 3%; margin-top: 15px; font: 700 20px Roboto;     color: #888888;">
+                                    Current Password
+
+
+                                </div>
+
+                                <div class="field__Name" >
+
+                                    <input name="userName" class="field__input "
+                                           id="checkout_shipping_firstname" type="text" size="30" placeholder="User Name"  required>
+                                    <input name="password" class="field__input "
+                                           id="checkout_shipping_lastname" type="text" size="30" placeholder="Password"  required>
+
+                                </div>
+                                <div class="label_change1" style=" float: left;
+                                     width: 40%; margin-top: 15px; font: 700 20px Roboto;     color: #888888;">
+
+
+                                    New Password
+                                </div>
+                                <div class="label_change2" style=" float: left;
+                                     width: 57%; margin-left: 3%;  font: 700 20px Roboto;     color: #888888;">
+                                    Confirm Password
+
+
+                                </div>
+                                <div class="field__Name">
+
+                                    <input name="newPass" class="field__input "
+                                           id="checkout_shipping_firstname" type="text" size="30" placeholder="New Password" pattern=".{3,16}" title="Password must have at least 3 characters and max 16 characters." required>
+                                    <input name="confrimPass" class="field__input "
+                                           id="checkout_shipping_lastname" type="text" size="30" placeholder="Confirm Password" pattern=".{3,16}" title="Password must have at least 3 characters and max 16 characters."  required>
+
+                                </div>
+
+
+
+                                <div class="submit_address">
+
+                                    <button class="bt_send"  >Save</button>
+
+                                </div>
+                                <div class="alert_danger" role="alert" style="text-align: center; margin-top: 15px; color: red;">
+                                    <h4> ${alertMess} </h4>
+                                </div>
+                            </form>
+
                         </div>
+
+
                     </div>
-                </div>
 
-                <div class="col-md-3">
-                    <div class="service-row">
-                        <a href="productController?pid=${listPNew[1].pid}" > 
 
-                            <img style="width:100%;" class="img-responsive" src="${listPNew[1].productImg}" />
-                        </a>
 
-                        <div class="service-item">
-                            <h3>Always On Top</h3>
-                            <p>All eyes on you</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-3">
-                    <div class="service-row">
-                        <a href="productController?pid=${listPNew[2].pid}" > 
 
-                            <img style="width:100%;" class="img-responsive" src="${listPNew[2].productImg}" />
-                        </a>
 
-                        <div class="service-item">
-                            <h3>Look perfect.</h3>
-                            <p>Discover the difference.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="service-row">
-                        <a href="productController?pid=${listPNew[3].pid}" > 
 
-                            <img style="width:100%; "  class="img-responsive" src="${listPNew[3].productImg} "  />
-                        </a>
+                    <div class="column_right column col-sm-4">
+                        <div class="widget widget__best-sellers">
+                            <h3 class="widget_header">Best Sellers</h3>
+                            <div class="widget_content">
+                                <div class="product-listing product-listing__bestsellers">
+                                    <c:forEach items= "${listB}" var="b">
 
-                        <div class="service-item">
-                            <h3>Just Perfect</h3>
-                            <p>Don't worry, we have it.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 class="title">THE BEST SELL PRODUCT</h2>
-                    <p class="combo-header-des">
-                        Buy the best, and forget the rest!
-                    </p>
-                </div>
-            </div>
+                                        <div class="product firstItem" style=" float: left; width: 100%; ">
 
-            <div class="row">
-                <c:forEach items="${listBest}" var="b">
-                    <div class="col-md-3">
-                        <div>
-                            <a href="productController?pid=${b.pid}" > 
-                                <img src="${b.productImg}" class="img-responsive" /></a>
-                            <div class="item">
-                                <p class="item-title">${b.productName}</p>
-                                <p class="item-description">
-                                    Discount: <span style="font-weight: bold; margin-left: 10px">10%</span>
-                                </p>
-                                <p>
-                                    Price: 
-                                    <span style="color: #f72b2f; margin-left: 10px; font-size: 20px">${b.productPrice} $ </span>
-                                    <a href="cartController?pid=${b.pid}" id="add_cart">Add to cart </a>
-                                </p>
+                                            <div class="product_img">
+                                                <a href="productController?pid=${b.pid}">
+                                                    <img src="${b.productImg}">
+                                                </a>
+                                            </div>
+
+                                            <div class="product_info">
+                                                <div class="product_name">
+                                                    <a href="productController?pid=${b.pid}">${b.productName}</a>
+                                                </div>
+
+                                                <div class="product_desc">${b.productNote}
+                                                </div>
+
+                                                <div class="product_price">
+
+                                                    <span class="money">${b.productPrice} $</span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </c:forEach>
+
+
+
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </c:forEach>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 class="title">THE PRODUCT IN STORE</h2>
-                    <p class="combo-header-des">
-                        Quality belong with time!
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <c:forEach items= "${listP}" begin="0" end="7" var="p">
-                    <div class="col-md-3">
-                        <div>
-                            <a href="productController?pid=${p.pid}" > 
-                                <img src="${p.productImg}" class="img-responsive" /></a>
-                            <div class="item">
-                                <p class="item-title">${p.productName}</p>
-                                <p class="item-description">
-                                    Discount: <span style="font-weight: bold; margin-left: 10px">10%</span>
-                                </p>
-                                <p>
-                                    Price: 
-                                    <span style="color: #f72b2f; margin-left: 10px; font-size: 20px">${p.productPrice} $ </span>
-                                    <a href="cartController?pid=${p.pid}" id="add_cart">Add to cart </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2>SPECIAL SALE OF FOR YOU</h2>
-                    <p class="combo-header-des">Limited time offer. Hurry up!</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div>
-                        <img class="img-responsive" src="images/saleoff.png" />
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div>
-                        <img class="img-responsive" src="images/freeship.png" />
 
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div>
-                        <img class="img-responsive" src="images/saleoff.png" />
-                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -328,7 +317,7 @@
 
 
                         <li class="lastItem"><a title="" href="showCartController">My cart</a></li>
-                         <c:if test="${sessionScope.acc!=null}">
+                            <c:if test="${sessionScope.acc!=null}">
                             <li class=""><a title="" href="changePassword">Change Account Pasword</a></li>
                             </c:if>
                     </ul>

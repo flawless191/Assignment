@@ -208,4 +208,18 @@ public class AccountDAO extends BaseDAO<Object> {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void updateAccountPassword(Account a) {
+        try {
+            String sql = "UPDATE [Account] SET [password]=?   WHERE [username] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, a.getPass());
+            statement.setString(2, a.getUser());
+
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

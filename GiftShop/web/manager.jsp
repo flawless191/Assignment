@@ -15,7 +15,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-lg-3 logo_wrap">
-                    <a id="logo" href="home.jsp">
+                    <a id="logo" href="homePageController">
 
                         <b>GiftShop</b>
 
@@ -260,7 +260,9 @@
 
 
                         <li class="lastItem"><a title="" href="showCartController">My cart</a></li>
-
+                         <c:if test="${sessionScope.acc!=null}">
+                            <li class=""><a title="" href="changePassword">Change Account Pasword</a></li>
+                            </c:if>
                     </ul>
                 </div>
 

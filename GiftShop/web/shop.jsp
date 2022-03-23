@@ -210,12 +210,12 @@
 
                                 <span class="prev"><a title="" href="searchProductController?q=${textsearch}&page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
                                         Previous</a></span>
-                                 <c:if test="${pageCurrent-1>0}">
+                                        <c:if test="${pageCurrent-1>0}">
                                     <span class=""><a title="" href="searchProductController?q=${textsearch}&page=${pageCurrent-1}">${pageCurrent-1}</a></span>
-                                 </c:if>       
-                                 <c:forEach begin="${pageCurrent}" end="${pageCurrent+2<=totalpage?pageCurrent+2:totalpage}" var="pg">
+                                    </c:if>       
+                                    <c:forEach begin="${pageCurrent}" end="${pageCurrent+2<=totalpage?pageCurrent+2:totalpage}" var="pg">
                                     <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="searchProductController?q=${textsearch}&page=${pg}">${pg}</a></span>
-                                 </c:forEach>
+                                    </c:forEach>
 
                                 <span class="next"><a title="" href="searchProductController?q=${textsearch}&page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
                                         »</a></span>
@@ -228,12 +228,12 @@
 
                             <span class="prev"><a title="" href="categoryController?cid=${cid}&page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
                                     Previous</a></span>
-                             <c:if test="${pageCurrent-1>0}">
+                                    <c:if test="${pageCurrent-1>0}">
                                 <span class=""><a title="" href="categoryController?cid=${cid}&page=${pageCurrent-1}">${pageCurrent-1}</a></span>
-                            </c:if>        
-                            <c:forEach begin="${pageCurrent}" end="${pageCurrent+2<=totalpage?pageCurrent+2:totalpage}" var="pg">
+                                </c:if>        
+                                <c:forEach begin="${pageCurrent}" end="${pageCurrent+2<=totalpage?pageCurrent+2:totalpage}" var="pg">
                                 <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="categoryController?cid=${cid}&page=${pg}">${pg}</a></span>
-                            </c:forEach>
+                                </c:forEach>
 
                             <span class="next"><a title="" href="categoryController?cid=${cid}&page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
                                     »</a></span>
@@ -248,10 +248,10 @@
                             </span>
                             <c:if test="${pageCurrent-1>0}">
                                 <span class=""><a title="" href="shopController?page=${pageCurrent-1}">${pageCurrent-1}</a></span>
-                            </c:if>
-                            <c:forEach begin="${pageCurrent}" end="${pageCurrent+2<=totalpage?pageCurrent+2:totalpage}" var="pg">
+                                </c:if>
+                                <c:forEach begin="${pageCurrent}" end="${pageCurrent+2<=totalpage?pageCurrent+2:totalpage}" var="pg">
                                 <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="shopController?page=${pg}">${pg}</a></span>
-                            </c:forEach>
+                                </c:forEach>
 
                             <span class="next"><a title="" href="shopController?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
                                     »</a></span>
@@ -304,10 +304,12 @@
                 <div class="col-md-3  custom_footer custom_footer3">
                     <h3>Information</h3>
                     <ul class="list">
-
+                        
 
                         <li class="lastItem"><a title="" href="showCartController">My cart</a></li>
-
+                            <c:if test="${sessionScope.acc!=null}">
+                            <li class=""><a title="" href="changePassword">Change Account Pasword</a></li>
+                            </c:if>
                     </ul>
                 </div>
 
