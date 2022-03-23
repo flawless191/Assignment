@@ -104,7 +104,7 @@
                     <ul class="sf-menu">
 
 
-                        <li class="active firstItem">
+                        <li class=" firstItem">
                             <a  href="homePageController">Home</a>
 
                         </li>

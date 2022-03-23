@@ -12,14 +12,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
  *
  * @author ASUS
  */
-public class signupController extends HttpServlet {
+public class updateAccountController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class signupController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet signupController</title>");
+            out.println("<title>Servlet updateAccountController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet signupController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet updateAccountController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +58,11 @@ public class signupController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String aid = request.getParameter("aid");
+        AccountDAO ac = new AccountDAO();
+        Account a = ac.getAccountsById(aid);
+        request.setAttribute("account", a);
+        request.getRequestDispatcher("updateAccount.jsp").forward(request, response);
     }
 
     /**
@@ -73,27 +76,18 @@ public class signupController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("username");
+        String aidString = request.getParameter("aid");
+        int aid = Integer.parseInt(aidString);
         String pass = request.getParameter("password");
-        String repass = request.getParameter("repassword");
+        String admin = request.getParameter("isAdmin");
+        boolean isAdmin = Boolean.parseBoolean(admin);
+        Account acc = new Account();
+        acc.setAid(aid);
+        acc.setPass(pass);
+        acc.setIsAdmin(isAdmin);
         AccountDAO ac = new AccountDAO();
-        Account a = ac.checkAccountsExist(user);
-        if (pass.equals(repass) == false) {
-            request.setAttribute("alertMess", "Password and Repassword must be the same");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-        } else if (a != null) {
-            request.setAttribute("alertMess", "Username has been existed.");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-        } else {
-            Account acc = new Account();
-            acc.setUser(user);
-            acc.setPass(pass);
-            acc.setIsAdmin(false);
-            ac.addAccount(acc);
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", acc);
-            response.sendRedirect("homePageController");
-        }
+        ac.updateAccount(acc);
+        response.sendRedirect("managerAccount");
     }
 
     /**

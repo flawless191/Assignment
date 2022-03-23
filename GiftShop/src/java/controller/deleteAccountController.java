@@ -12,14 +12,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Account;
 
 /**
  *
  * @author ASUS
  */
-public class signupController extends HttpServlet {
+public class deleteAccountController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +36,10 @@ public class signupController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet signupController</title>");
+            out.println("<title>Servlet deleteAccountController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet signupController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet deleteAccountController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +57,10 @@ public class signupController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String aid = request.getParameter("aid");
+        AccountDAO ad = new AccountDAO();
+        ad.deleteAccount(aid);
+        response.sendRedirect("managerAccount");
     }
 
     /**
@@ -73,27 +74,7 @@ public class signupController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("username");
-        String pass = request.getParameter("password");
-        String repass = request.getParameter("repassword");
-        AccountDAO ac = new AccountDAO();
-        Account a = ac.checkAccountsExist(user);
-        if (pass.equals(repass) == false) {
-            request.setAttribute("alertMess", "Password and Repassword must be the same");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-        } else if (a != null) {
-            request.setAttribute("alertMess", "Username has been existed.");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-        } else {
-            Account acc = new Account();
-            acc.setUser(user);
-            acc.setPass(pass);
-            acc.setIsAdmin(false);
-            ac.addAccount(acc);
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", acc);
-            response.sendRedirect("homePageController");
-        }
+        processRequest(request, response);
     }
 
     /**
