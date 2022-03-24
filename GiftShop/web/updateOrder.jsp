@@ -19,12 +19,12 @@
                     <input type="text" value="${order.orderid}" name="oid"  readonly />
                     <label >CustomerID</label>
 
-                    <input type="number" value="${order.custid}" name="custId" required=""/>
+                    <input type="number" value="${order.custid}" name="custId" required/>
                     <label>AccountID</label>
                     <input type="number"  value="${order.accountorderid}" title="AccountID can be empty." name="accountId"    />  
                     <label>OrderDate</label>
 
-                    <input type="text" placeholder="OrderDate" value="${order.orderDate}"  name="orderDate" onfocus="(this.type = 'date')">
+                    <input type="text" placeholder="OrderDate" value="${order.orderDate}"  name="orderDate" onfocus="(this.type = 'date')" required>
                     <div class="alert_danger" role="alert" style="text-align: center">
                         ${alertMess}
                     </div>

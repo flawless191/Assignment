@@ -6,18 +6,19 @@
 package controller;
 
 import DAL.AccountDAO;
+import DAL.CustomerAccountDAO;
 import DAL.CustomerDAO;
 import DAL.OrderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Account;
 import model.Customer;
+import model.CustomerAccount;
 import model.Order;
 
 /**
@@ -118,6 +119,15 @@ public class addOrderController extends HttpServlet {
 
                 OrderDAO od = new OrderDAO();
                 od.insertOrder(o);
+                if (o.getAccountorderid()!=0) {
+                        CustomerAccountDAO Cad = new CustomerAccountDAO();
+
+                        CustomerAccount ca = Cad.getCustomerAndAccountByCustIdAndAccId(o.getCustid(), o.getAccountorderid());
+                        // if customerid and account id not exist in CustomerAccount table before
+                        if (ca == null) {
+                            Cad.addCustomerAndAccount(o.getCustid(), o.getAccountorderid());
+                        }
+                    }
                 response.sendRedirect("managerOrder");
             } catch (Exception e) {
                 request.setAttribute("alertMess", "Invalid date.");

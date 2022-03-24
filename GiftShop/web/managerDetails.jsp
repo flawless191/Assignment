@@ -106,13 +106,13 @@
 
 
                             <ul class="sub-menu" style="width: 235px; ">
-                                <li style="width: 100%; float: none; "><a class="${listP!=null||product!=null?"active":""}"
+                                <li style="width: 100%; float: none; "><a class="${listP!=null||product!=null||searchMessage eq 'No products found'?"active":""}"
                                                                           style="width: auto; float: none;" href="managerController">Manager Product</a>
                                 </li>
-                                <li style="width: 100%; float: none; "><a class="${listA!=null||account!=null?"active":""}"
+                                <li style="width: 100%; float: none; "><a class="${listA!=null||account!=null||searchMessage eq 'No account found'?"active":""}"
                                                                           style="width: auto; float: none;" href="managerAccount">Manager Account</a>
                                 </li>
-                                <li style="width: 100%; float: none; "><a class="${listA!=null||account!=null?"active":""}"
+                                <li style="width: 100%; float: none; "><a class="${listO!=null||account!=null||searchMessage eq 'No order found'?"active":""}"
                                                                           style="width: auto; float: none;" href="managerOrder">Manager Order</a>
                                 </li>
                             </ul>
@@ -146,7 +146,7 @@
 
                         
                     </div>
-                    <a href="#">AddOrder</a>
+                    <a href="addDetails?oid=${currentorderid}">AddCartDetails</a>
                 </div>
 
             </div>
@@ -169,10 +169,10 @@
                             <td>${o.product.pid}</td>
                            
                             <td>${o.amount}</td>
-                            <td><a href="#?aid="><img style="width:30px;"
+                            <td><a href="updateDetails?oid=${o.cartid}&pid=${o.product.pid}"><img style="width:30px;"
                                                                   src="images/editIcon.png"/>
                                 </a>
-                                <a href="#" onclick="confirmDelete()"><img style="width:30px;"
+                                <a href="#" onclick="confirmDelete(${o.cartid},${o.product.pid})"><img style="width:30px;"
                                                                                        src="images/deleteIcon.png" />
                                 </a>
                             </td>
@@ -273,10 +273,10 @@
         </div>
     </body>
     <script>
-        function confirmDelete(id) {
-            if (confirm('Do you want to delete order have Id: ' + id + '?')) {
-//                window.location.href = 'deleteAccount?aid=' + id;
-//                window.alert('Delete successfully!');
+        function confirmDelete(oid,productid) {
+            if (confirm('Do you want to delete cart details have orderid ' + oid +' and product id '+productid+ '?')) {
+                window.location.href = 'deleteDetails?oid=' + oid+'&pid=' + productid;
+
 
             }
         }

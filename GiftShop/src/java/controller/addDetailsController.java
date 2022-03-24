@@ -5,23 +5,22 @@
  */
 package controller;
 
-import DAL.CategoryDAO;
-import DAL.OrderDAO;
+import DAL.CartDAO;
+import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Category;
-import model.Order;
+import model.Cart;
+import model.Product;
 
 /**
  *
  * @author ASUS
  */
-public class managerOrderController extends HttpServlet {
+public class addDetailsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +39,10 @@ public class managerOrderController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet managerOrderController</title>");
+            out.println("<title>Servlet addDetailsController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet managerOrderController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet addDetailsController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,32 +60,9 @@ public class managerOrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        OrderCartDAO od1 = new OrderCartDAO();
-//        ArrayList<OrderCart> listOrder1 = new ArrayList<>();
-//        listOrder1 = od1.getListOrder();
-        ArrayList<Category> listCategory = new ArrayList<>();
-        CategoryDAO cd = new CategoryDAO();
-        listCategory = cd.getCategory();
-        OrderDAO od = new OrderDAO();
-
-        int totalPage = 0;
-        int pagesize = 12;
-        totalPage = od.getTotalOrderPage(pagesize);
-        String pageCurrent = request.getParameter("page");
-        int pageC = 0;
-        if (pageCurrent == null) {
-            pageC = 1;
-        } else {
-            pageC = Integer.parseInt(pageCurrent);
-
-        }
-        ArrayList<Order> listOrder = new ArrayList<>();
-        listOrder = od.getListOrderWithPage(pageC, pagesize);
-        request.setAttribute("listC", listCategory);
-        request.setAttribute("listO", listOrder);
-        request.setAttribute("totalpage", totalPage);
-        request.setAttribute("pageCurrent", pageC);
-        request.getRequestDispatcher("managerOrder.jsp").forward(request, response);
+        String oid = request.getParameter("oid");
+        request.setAttribute("currentorderid", oid);
+        request.getRequestDispatcher("addCartDetails.jsp").forward(request, response);
     }
 
     /**
@@ -100,28 +76,43 @@ public class managerOrderController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String oidString = request.getParameter("oid");
-        OrderDAO od = new OrderDAO();
-        Order o = new Order();
-        o = od.getOrdersById(oidString);
-        if (o != null) {
-            ArrayList<Category> listCategory = new ArrayList<>();
-            CategoryDAO cd = new CategoryDAO();
-            listCategory = cd.getCategory();
-            ArrayList<Order> listOrder = new ArrayList<>();
-            listOrder.add(o);
-            request.setAttribute("searchMessage", oidString);
-            request.setAttribute("listO", listOrder);
-            request.setAttribute("listC", listCategory);
-            request.getRequestDispatcher("managerOrder.jsp").forward(request, response);
+        String oid = request.getParameter("oid");
+        String pid = request.getParameter("pid");
+        String amountString = request.getParameter("amount");
+        int orederid = Integer.parseInt(oid);
+        int productid = Integer.parseInt(pid);
+        int amount = Integer.parseInt(amountString);
+        ProductDAO pd = new ProductDAO();
+        Product product = new Product();
+        product = pd.getProductById(productid);
+        //check product exist or not
+        if (product == null) {
+            request.setAttribute("alertMess", "Don't exist product has product id = " + productid);
+            request.setAttribute("currentorderid", oid);
+
+            request.getRequestDispatcher("addCartDetails.jsp").forward(request, response);
         } else {
-            ArrayList<Category> listCategory = new ArrayList<>();
-            CategoryDAO cd = new CategoryDAO();
-            listCategory = cd.getCategory();
-            request.setAttribute("listC", listCategory);
-            request.setAttribute("searchMessage", "No order found");
-            request.getRequestDispatcher("managerOrder.jsp").forward(request, response);
+            Cart c = new Cart();
+            CartDAO cd = new CartDAO();
+            c = cd.getCartByOrderIdAndProductId(orederid, productid);
+            //check new cart details exist in database before or not
+            if (c != null) {
+                request.setAttribute("alertMess", "Already exist cart details with this information in database.");
+                request.setAttribute("currentorderid", oid);
+
+                request.getRequestDispatcher("addCartDetails.jsp").forward(request, response);
+            } else {
+                Cart cart = new Cart();
+
+                cart.setCartid(orederid);
+                cart.setProduct(product);
+                cart.setAmount(amount);
+                cd.insertCart(cart);
+                response.sendRedirect("cartDetails?cartid=" + orederid);
+            }
+
         }
+
     }
 
     /**

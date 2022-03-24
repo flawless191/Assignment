@@ -112,6 +112,18 @@
         <servlet-name>updateOrderController</servlet-name>
         <servlet-class>controller.updateOrderController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteDetailsController</servlet-name>
+        <servlet-class>controller.deleteDetailsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addDetailsController</servlet-name>
+        <servlet-class>controller.addDetailsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateDetailsController</servlet-name>
+        <servlet-class>controller.updateDetailsController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -223,6 +235,18 @@
     <servlet-mapping>
         <servlet-name>updateOrderController</servlet-name>
         <url-pattern>/updateOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteDetailsController</servlet-name>
+        <url-pattern>/deleteDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addDetailsController</servlet-name>
+        <url-pattern>/addDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateDetailsController</servlet-name>
+        <url-pattern>/updateDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

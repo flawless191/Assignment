@@ -55,11 +55,12 @@ public class CartDAO extends BaseDAO<Object> {
         }
     }
 
-    public void deletCart(Cart cart) {
+    public void deletCart(int orderid, int productid) {
         try {
             String sql = "Delete From Cart Where orderid=? And pid=?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, cart.getCartid());
+            statement.setInt(1, orderid);
+            statement.setInt(2, productid);
 
             statement.executeUpdate();
 
@@ -106,13 +107,59 @@ public class CartDAO extends BaseDAO<Object> {
         listCartDetails = cartd.getListCartById(1);
         System.out.println("Product" + listCartDetails.get(0).getAmount());
     }
-    
-    
+
     public void deleteCartByOrderId(String id) {
         try {
             String sql = "DELETE From [Cart] Where orderid = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, id);
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Cart getCartByOrderIdAndProductId(int orderid, int productid) {
+        try {
+            String sql = "SELECT [orderid]\n"
+                    + "      ,[pid]\n"
+                    + "      ,[amount]\n"
+                    + "  FROM [giftShopDb].[dbo].[Cart]\n"
+                    + "  Where [orderid] = ? and [pid] =? \n"
+                    + "  ";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, orderid);
+            statement.setInt(2, productid);
+             ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Cart c = new Cart();
+                c.setCartid(rs.getInt("orderid"));
+                ProductDAO pd = new ProductDAO();
+                Product p = new Product();
+                p = pd.getProductById(rs.getInt("pid"));
+                c.setProduct(p);
+                c.setAmount(rs.getInt("amount"));
+
+                return c;
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public void updateCartDetails(Cart c, int oldPid) {
+        try {
+            String sql = "UPDATE Cart Set pid = ?, amount = ? Where orderid = ? and pid = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, c.getProduct().getPid());
+            statement.setInt(2, c.getAmount());
+            statement.setInt(3, c.getCartid());
+            statement.setInt(4, oldPid);
+            
+
             statement.executeUpdate();
 
         } catch (SQLException ex) {

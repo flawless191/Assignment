@@ -6,6 +6,7 @@
 package controller;
 
 import DAL.AccountDAO;
+import DAL.CustomerAccountDAO;
 import DAL.CustomerDAO;
 import DAL.OrderDAO;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Account;
 import model.Customer;
+import model.CustomerAccount;
 import model.Order;
 
 /**
@@ -134,6 +136,15 @@ public class updateOrderController extends HttpServlet {
 
                     OrderDAO od = new OrderDAO();
                     od.updateOrder(o);
+                    if (o.getAccountorderid()!=0) {
+                        CustomerAccountDAO Cad = new CustomerAccountDAO();
+
+                        CustomerAccount ca = Cad.getCustomerAndAccountByCustIdAndAccId(o.getCustid(), o.getAccountorderid());
+                        // if customerid and account id not exist in CustomerAccount table before
+                        if (ca == null) {
+                            Cad.addCustomerAndAccount(o.getCustid(), o.getAccountorderid());
+                        }
+                    }
                     response.sendRedirect("managerOrder");
                 } catch (Exception e) {
                     Order order = new Order();
