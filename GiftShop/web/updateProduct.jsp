@@ -13,7 +13,7 @@
         <div class="form_page">
             <div class="form">
 
-                <form action="updateProductController" method="post" onsubmit="updateMessage()">
+                <form action="updateProductController" method="post" >
                     <div style="color: #db1d24; text-align: center; margin-bottom: 10px;">PRODUCT INFORMATION</div>
                     <label>ID</label>
                     <input type="text" value="${product.pid}" name="pid"  readonly />
@@ -44,10 +44,6 @@
                 </form>
             </div>
         </div>
-        <script>
-            function updateMessage() {
-                alert("Update product successful!");
-            }
-        </script>
+       
     </body>
 </html>

@@ -91,5 +91,37 @@ public class CustomerDAO extends BaseDAO<Object> {
         return lastCustId;
     }
 
+    public Customer getCustomerById(int id) {
+        try {
+            String sql = "SELECT [custid]\n"
+                    + "      ,[firstname]\n"
+                    + "      ,[lastname]\n"
+                    + "      ,[address]\n"
+                    + "      ,[city]\n"
+                    + "      ,[phone]\n"
+                    + "  FROM [giftShopDb].[dbo].[Customer]\n"
+                    + "  \n"
+                    + "  Where [custid]=? ";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            
+            
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                Customer c = new Customer();
+                c.setCustid(rs.getInt("custid"));
+                c.setFirstname(rs.getString("firstname"));
+                c.setLastname(rs.getString("lastname"));
+                c.setAddress(rs.getString("address"));
+                c.setCity(rs.getString("city"));
+                c.setPhone(rs.getString("phone"));
+                
+                return c;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     
 }

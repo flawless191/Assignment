@@ -101,18 +101,18 @@
 
                         </li>
 
-                         <li class="has-dropdown">
+                        <li class="has-dropdown">
                             <a title="" class="active" >Manager</a>
 
 
                             <ul class="sub-menu" style="width: 235px; ">
-                                <li style="width: 100%; float: none; "><a class="${listP!=null||product!=null||searchMessage eq 'No products found'?"active":""}"
+                                <li style="width: 100%; float: none; "><a class="${listP!=null||product!=null?"active":""}"
                                                                           style="width: auto; float: none;" href="managerController">Manager Product</a>
                                 </li>
-                                <li style="width: 100%; float: none; "><a class="${listA!=null||account!=null||searchMessage eq 'No account found'?"active":""}"
+                                <li style="width: 100%; float: none; "><a class="${listA!=null||account!=null?"active":""}"
                                                                           style="width: auto; float: none;" href="managerAccount">Manager Account</a>
                                 </li>
-                                <li style="width: 100%; float: none; "><a class="${listO!=null||account!=null||searchMessage eq 'No order found'?"active":""}"
+                                <li style="width: 100%; float: none; "><a class="${listA!=null||account!=null?"active":""}"
                                                                           style="width: auto; float: none;" href="managerOrder">Manager Order</a>
                                 </li>
                             </ul>
@@ -144,52 +144,41 @@
                     <b>Manager System</b> 
                     <div class="manager_search">
 
-                        <form action="managerController" method="post">
-                            <div class="">
-
-                                <input id="search-byid" name="pid" type="search" placeholder="Search product by id..." value="${searchMessage}" pattern="[0-9]{1,}" title="Please input number only."required/>
-
-                                <button type="submit" class="button_searchbyid">
-
-                                    Search
-                                </button>
-                            </div>
-
-                        </form>
+                        
                     </div>
-                    <a href="addProductController">AddProduct</a>
+                    <a href="#">AddOrder</a>
                 </div>
 
             </div>
             <div class="managet_product">
-                <table class="table bordered 3px ">
+                <table class="table table table-striped  ">
                     <thead >
                         <tr>
-                            <td><b>ID</b></td>
-                            <td><b>Name</b></td>
-                            <td><b>IMG</b></td>
-                            <td><b>Price</b></td>
+                            <td><b>OrderID</b></td>
+                            <td><b>ProductID</b></td>
+                            <td><b>Amount</b></td>
+                                                 
                             <td><b>Action</b></td>
 
                         </tr>
                     </thead>
-                    <c:forEach items="${listP}" var="p">
+
+                    <c:forEach items="${listO}" var="o">
                         <tr>
-                            <th  scope="row" style="text-align: center">${p.pid}</th>
-                            <td>${p.productName}</td>
-                            <td> <img style="width:180px;"
-                                      src="${p.productImg}"
-                                      class="img-responsive" /></td>
-                            <td>${p.productPrice}$</td>
-                            <td><a href="updateProductController?pid=${p.pid}" id="bt_update">
-                                    <img style="width:30px;"
-                                         src="images/editIcon.png"
-                                         class="img-responsive" />
+                            <th  scope="row" style="text-align: center">${o.cartid}</th>
+                            <td>${o.product.pid}</td>
+                           
+                            <td>${o.amount}</td>
+                            <td><a href="#?aid="><img style="width:30px;"
+                                                                  src="images/editIcon.png"/>
                                 </a>
-                                <a href="#" id="bt_delete" onclick="confirmDelete(${p.pid})">
-                                    <img style="width:30px;"
-                                         src="images/deleteIcon.png" /></a>
+                                <a href="#" onclick="confirmDelete()"><img style="width:30px;"
+                                                                                       src="images/deleteIcon.png" />
+                                </a>
                             </td>
+
+
+
 
                         </tr>
                     </c:forEach>
@@ -202,16 +191,16 @@
 
                     <div id="pagination">
 
-                        <span class="prev"><a title="" href="managerController?page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
+                        <span class="prev"><a title="" href="managerAccount?page=${pageCurrent-1>0?pageCurrent-1:"1"}">«
                                 Previous</a></span>
-                            <c:if test="${pageCurrent-1>0}">
-                                <span class=""><a title="" href="managerController?page=${pageCurrent-1}">${pageCurrent-1}</a></span>
+                                <c:if test="${pageCurrent-1>0}">
+                            <span class=""><a title="" href="managerAccount?page=${pageCurrent-1}">${pageCurrent-1}</a></span>
                             </c:if>
                             <c:forEach begin="${pageCurrent}" end="${pageCurrent+2<=totalpage?pageCurrent+2:totalpage}" var="pg">
-                                <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="managerController?page=${pg}">${pg}</a></span>
+                            <span class=" ${pg==pageCurrent?"current":""}"><a title="" href="managerAccount?page=${pg}">${pg}</a></span>
                             </c:forEach>
 
-                        <span class="next"><a title="" href="managerController?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
+                        <span class="next"><a title="" href="managerAccount?page=${pageCurrent+1>totalpage?totalpage:pageCurrent+1}">Next
                                 »</a></span>
                     </div>
 
@@ -262,7 +251,7 @@
 
 
                         <li class="lastItem"><a title="" href="showCartController">My cart</a></li>
-                         <c:if test="${sessionScope.acc!=null}">
+                            <c:if test="${sessionScope.acc!=null}">
                             <li class=""><a title="" href="changePassword">Change Account Pasword</a></li>
                             </c:if>
                     </ul>
@@ -285,9 +274,9 @@
     </body>
     <script>
         function confirmDelete(id) {
-            if (confirm('Are you want to delete product have Id: ' + id + '?')) {
-                window.location.href = 'deleteProductController?pid=' + id;
-                window.alert('Delete successfully!');
+            if (confirm('Do you want to delete order have Id: ' + id + '?')) {
+//                window.location.href = 'deleteAccount?aid=' + id;
+//                window.alert('Delete successfully!');
 
             }
         }

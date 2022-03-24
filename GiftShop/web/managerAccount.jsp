@@ -105,14 +105,16 @@
                             <a title="" class="active" >Manager</a>
 
 
-                            <ul class="sub-menu" style="width: 235px; ">
-                                <li style="width: 100%; float: none; "><a class="${listP!=null||product!=null?"active":""}"
+                           <ul class="sub-menu" style="width: 235px; ">
+                                <li style="width: 100%; float: none; "><a class="${listP!=null||product!=null||searchMessage eq 'No products found'?"active":""}"
                                                                           style="width: auto; float: none;" href="managerController">Manager Product</a>
                                 </li>
-                                <li style="width: 100%; float: none; "><a class="${listA!=null||account!=null?"active":""}"
+                                <li style="width: 100%; float: none; "><a class="${listA!=null||account!=null||searchMessage eq 'No account found'?"active":""}"
                                                                           style="width: auto; float: none;" href="managerAccount">Manager Account</a>
                                 </li>
-
+                                <li style="width: 100%; float: none; "><a class="${listO!=null||account!=null||searchMessage eq 'No order found'?"active":""}"
+                                                                          style="width: auto; float: none;" href="managerOrder">Manager Order</a>
+                                </li>
                             </ul>
 
                         </li>

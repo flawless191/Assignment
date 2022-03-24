@@ -13,7 +13,7 @@
         <div class="form_page">
             <div class="form">
 
-                <form action="updateAccount" method="post" onsubmit="updateMessage()">
+                <form action="updateAccount" method="post" >
                     <div style="color: #db1d24; text-align: center; margin-bottom: 10px;">ACCOUNT INFORMATION</div>
                     <label>ID</label>
                     <input type="text" value="${account.aid}" name="aid"  readonly />
@@ -35,10 +35,6 @@
                 </form>
             </div>
         </div>
-        <script>
-            function updateMessage() {
-                alert("Update account successful!");
-            }
-        </script>
+        
     </body>
 </html>
